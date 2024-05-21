@@ -1,0 +1,16 @@
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\DataBase.exe.config
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\DataBase.exe
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\DataBase.pdb
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\EntityFramework.dll
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\System.Data.SQLite.dll
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\EntityFramework.xml
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\System.Data.SQLite.xml
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\obj\Debug\DataBase.csproj.AssemblyReference.cache
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\obj\Debug\DataBase.csproj.CoreCompileInputs.cache
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\obj\Debug\DataBase.csproj.Up2Date
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\obj\Debug\DataBase.exe
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\obj\Debug\DataBase.pdb
