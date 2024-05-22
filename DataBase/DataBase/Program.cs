@@ -62,165 +62,220 @@ namespace DataBase
 
         static void DisplayAllUsers(UserRepository userRepository)
         {
-            var users = userRepository.GetAllUsers();
-            Console.WriteLine("\nAll Users:");
-            foreach (var user in users)
+            try
             {
-                Console.WriteLine($"UserId: {user.UserId}, FirstName: {user.FirstName}, LastName: {user.LastName}, UserStat: {user.UserStat}, TeamLeadId: {(user.TeamLeadId.HasValue ? user.TeamLeadId.ToString() : "N/A")}");
+                var users = userRepository.GetAllUsers();
+                Console.WriteLine("\nAll Users:");
+                foreach (var user in users)
+                {
+                    Console.WriteLine($"UserId: {user.UserId}, FirstName: {user.FirstName}, LastName: {user.LastName}, UserStat: {user.UserStat}, TeamLeadId: {(user.TeamLeadId.HasValue ? user.TeamLeadId.ToString() : "N/A")}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while displaying users: {ex.Message}");
             }
         }
 
         static void DisplayAllTasks(TaskRepository taskRepository)
         {
-            var tasks = taskRepository.GetAllTasks();
-            Console.WriteLine("\nAll Tasks:");
-            foreach (var task in tasks)
+            try
             {
-                Console.WriteLine($"TaskId: {task.TaskId}, Title: {task.Title}, Description: {task.Description}, Status: {task.Status}, EstimatedTime: {task.EstimatedTime}, Notes: {task.Notes}, UserId: {task.UserId}");
+                var tasks = taskRepository.GetAllTasks();
+                Console.WriteLine("\nAll Tasks:");
+                foreach (var task in tasks)
+                {
+                    Console.WriteLine($"TaskId: {task.TaskId}, Title: {task.Title}, Description: {task.Description}, Status: {task.Status}, EstimatedTime: {task.EstimatedTime}, Notes: {task.Notes}, UserId: {task.UserId}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while displaying tasks: {ex.Message}");
             }
         }
 
         static void AddUser(UserRepository userRepository)
         {
-            Console.Write("Enter FirstName: ");
-            string firstName = Console.ReadLine();
-            Console.Write("Enter LastName: ");
-            string lastName = Console.ReadLine();
-
-            User newUser = new User
+            try
             {
-                FirstName = firstName,
-                LastName = lastName,
-                UserStat = UserStats.Employee, // Default UserStat
-                TeamLeadId = null
-            };
+                Console.Write("Enter FirstName: ");
+                string firstName = Console.ReadLine();
+                Console.Write("Enter LastName: ");
+                string lastName = Console.ReadLine();
 
-            userRepository.CreateUser(newUser);
-            Console.WriteLine("User added successfully!");
+                User newUser = new User
+                {
+                    FirstName = firstName,
+                    LastName = lastName,
+                    UserStat = UserStats.Employee, // Default UserStat
+                    TeamLeadId = null
+                };
+
+                userRepository.CreateUser(newUser);
+                Console.WriteLine("User added successfully!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while adding a user: {ex.Message}");
+            }
         }
+
         static void AddTaskForUser(TaskRepository taskRepository)
         {
-            Console.Write("Enter UserId for the task: ");
-            int userId = int.Parse(Console.ReadLine());
-            Console.Write("Enter Title for the task: ");
-            string title = Console.ReadLine();
-            Console.Write("Enter Description for the task: ");
-            string description = Console.ReadLine();
-            Console.Write("Enter Status for the task: ");
-            string status = Console.ReadLine();
-            Console.Write("Enter EstimatedTime for the task: ");
-            int estimatedTime = int.Parse(Console.ReadLine());
-            Console.Write("Enter Notes for the task: ");
-            string notes = Console.ReadLine();
-
-            Task newTask = new Task
+            try
             {
-                Title = title,
-                Description = description,
-                Status = status,
-                EstimatedTime = estimatedTime,
-                Notes = notes,
-                UserId = userId
-            };
+                Console.Write("Enter UserId for the task: ");
+                int userId = int.Parse(Console.ReadLine());
+                Console.Write("Enter Title for the task: ");
+                string title = Console.ReadLine();
+                Console.Write("Enter Description for the task: ");
+                string description = Console.ReadLine();
+                Console.Write("Enter Status for the task: ");
+                string status = Console.ReadLine();
+                Console.Write("Enter EstimatedTime for the task: ");
+                int estimatedTime = int.Parse(Console.ReadLine());
+                Console.Write("Enter Notes for the task: ");
+                string notes = Console.ReadLine();
 
-            taskRepository.CreateTask(newTask);
-            Console.WriteLine("Task added successfully!");
+                Task newTask = new Task
+                {
+                    Title = title,
+                    Description = description,
+                    Status = status,
+                    EstimatedTime = estimatedTime,
+                    Notes = notes,
+                    UserId = userId
+                };
+
+                taskRepository.CreateTask(newTask);
+                Console.WriteLine("Task added successfully!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while adding a task: {ex.Message}");
+            }
         }
 
         static void ModifyUser(UserRepository userRepository)
         {
-            Console.Write("Enter UserId of the user to modify: ");
-            int userId = int.Parse(Console.ReadLine());
-
-            // Collect new details
-            Console.Write("Enter new FirstName: ");
-            string newFirstName = Console.ReadLine();
-            Console.Write("Enter new LastName: ");
-            string newLastName = Console.ReadLine();
-            Console.Write("Enter new UserStat (Manager/TeamLeader/Employee): ");
-            string newUserStatStr = Console.ReadLine();
-            UserStats newUserStat;
-            if (!Enum.TryParse(newUserStatStr, out newUserStat))
+            try
             {
-                Console.WriteLine("Invalid UserStat entered. User not modified.");
-                return;
-            }
+                Console.Write("Enter UserId of the user to modify: ");
+                int userId = int.Parse(Console.ReadLine());
 
-            int? newTeamLeadId = null;
-            Console.Write("Enter new TeamLeadId (leave blank for none): ");
-            string newTeamLeadIdStr = Console.ReadLine();
-            if (!string.IsNullOrEmpty(newTeamLeadIdStr))
-            {
-                if (!int.TryParse(newTeamLeadIdStr, out int teamLeadId))
+                // Collect new details
+                Console.Write("Enter new FirstName: ");
+                string newFirstName = Console.ReadLine();
+                Console.Write("Enter new LastName: ");
+                string newLastName = Console.ReadLine();
+                Console.Write("Enter new UserStat (Manager/TeamLeader/Employee): ");
+                string newUserStatStr = Console.ReadLine();
+                UserStats newUserStat;
+                if (!Enum.TryParse(newUserStatStr, out newUserStat))
                 {
-                    Console.WriteLine("Invalid TeamLeadId entered. User not modified.");
+                    Console.WriteLine("Invalid UserStat entered. User not modified.");
                     return;
                 }
-                newTeamLeadId = teamLeadId;
+
+                int? newTeamLeadId = null;
+                Console.Write("Enter new TeamLeadId (leave blank for none): ");
+                string newTeamLeadIdStr = Console.ReadLine();
+                if (!string.IsNullOrEmpty(newTeamLeadIdStr))
+                {
+                    if (!int.TryParse(newTeamLeadIdStr, out int teamLeadId))
+                    {
+                        Console.WriteLine("Invalid TeamLeadId entered. User not modified.");
+                        return;
+                    }
+                    newTeamLeadId = teamLeadId;
+                }
+
+                // Create modified user object
+                User modifiedUser = new User
+                {
+                    UserId = userId,
+                    FirstName = newFirstName,
+                    LastName = newLastName,
+                    UserStat = newUserStat,
+                    TeamLeadId = newTeamLeadId
+                };
+
+                // Update user
+                userRepository.UpdateUser(modifiedUser);
+                Console.WriteLine("User modified successfully!");
             }
-
-            // Create modified user object
-            User modifiedUser = new User
+            catch (Exception ex)
             {
-                UserId = userId,
-                FirstName = newFirstName,
-                LastName = newLastName,
-                UserStat = newUserStat,
-                TeamLeadId = newTeamLeadId
-            };
-
-            // Update user
-            userRepository.UpdateUser(modifiedUser);
-            Console.WriteLine("User modified successfully!");
+                Console.WriteLine($"An error occurred while modifying the user: {ex.Message}");
+            }
         }
-
 
         static void ModifyTask(TaskRepository taskRepository)
         {
-            Console.Write("Enter TaskId of the task to modify: ");
-            int taskId = int.Parse(Console.ReadLine());
-            Console.Write("Enter new Title: ");
-            string newTitle = Console.ReadLine();
-            Console.Write("Enter new Description: ");
-            string newDescription = Console.ReadLine();
-            Console.Write("Enter new Status: ");
-            string newStatus = Console.ReadLine();
-            Console.Write("Enter new EstimatedTime: ");
-            int newEstimatedTime = int.Parse(Console.ReadLine());
-            Console.Write("Enter new Notes: ");
-            string newNotes = Console.ReadLine();
-
-            Task modifiedTask = new Task
+            try
             {
-                TaskId = taskId,
-                Title = newTitle,
-                Description = newDescription,
-                Status = newStatus,
-                EstimatedTime = newEstimatedTime,
-                Notes = newNotes
-            };
+                Console.Write("Enter TaskId of the task to modify: ");
+                int taskId = int.Parse(Console.ReadLine());
+                Console.Write("Enter new Title: ");
+                string newTitle = Console.ReadLine();
+                Console.Write("Enter new Description: ");
+                string newDescription = Console.ReadLine();
+                Console.Write("Enter new Status: ");
+                string newStatus = Console.ReadLine();
+                Console.Write("Enter new EstimatedTime: ");
+                int newEstimatedTime = int.Parse(Console.ReadLine());
+                Console.Write("Enter new Notes: ");
+                string newNotes = Console.ReadLine();
 
-            taskRepository.UpdateTask(modifiedTask);
-            Console.WriteLine("Task modified successfully!");
+                Task modifiedTask = new Task
+                {
+                    TaskId = taskId,
+                    Title = newTitle,
+                    Description = newDescription,
+                    Status = newStatus,
+                    EstimatedTime = newEstimatedTime,
+                    Notes = newNotes
+                };
+
+                taskRepository.UpdateTask(modifiedTask);
+                Console.WriteLine("Task modified successfully!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while modifying the task: {ex.Message}");
+            }
         }
 
         static void DeleteUser(UserRepository userRepository)
         {
-            Console.Write("Enter UserId of the user to delete: ");
-            int userId = int.Parse(Console.ReadLine());
+            try
+            {
+                Console.Write("Enter UserId of the user to delete: ");
+                int userId = int.Parse(Console.ReadLine());
 
-            userRepository.DeleteUser(userId);
-            Console.WriteLine("User deleted successfully!");
+                userRepository.DeleteUser(userId);
+                Console.WriteLine("User deleted successfully!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while deleting the user: {ex.Message}");
+            }
         }
 
         static void DeleteTask(TaskRepository taskRepository)
         {
-            Console.Write("Enter TaskId of the task to delete: ");
-            int taskId = int.Parse(Console.ReadLine());
+            try
+            {
+                Console.Write("Enter TaskId of the task to delete: ");
+                int taskId = int.Parse(Console.ReadLine());
 
-            taskRepository.DeleteTask(taskId);
-            Console.WriteLine("Task deleted successfully!");
+                taskRepository.DeleteTask(taskId);
+                Console.WriteLine("Task deleted successfully!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while deleting the task: {ex.Message}");
+            }
         }
-
     }
 }

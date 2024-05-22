@@ -1,4 +1,5 @@
-﻿using System.Data.SQLite;
+﻿using System;
+using System.Data.SQLite;
 
 public class Database
 {
@@ -11,40 +12,49 @@ public class Database
 
     private void CreateDatabase()
     {
-        using (var connection = new SQLiteConnection(connectionString))
+        try
         {
-            connection.Open();
-
-            string createUsersTableQuery = @"
-                CREATE TABLE IF NOT EXISTS Users (
-                    UserId INTEGER PRIMARY KEY AUTOINCREMENT,
-                    FirstName TEXT NOT NULL,
-                    LastName TEXT NOT NULL, 
-                    UserStat TEXT NOT NULL,
-                    TeamLeadId INTEGER
-                )";
-
-            string createTasksTableQuery = @"
-                CREATE TABLE IF NOT EXISTS Tasks (
-                    TaskId INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Title TEXT NOT NULL,
-                    Description TEXT,
-                    Status TEXT,
-                    EstimatedTime INTEGER,
-                    Notes TEXT,
-                    UserId INTEGER,
-                    FOREIGN KEY (UserId) REFERENCES Users (UserId)
-                )";
-
-            using (var command = new SQLiteCommand(createUsersTableQuery, connection))
+            using (var connection = new SQLiteConnection(connectionString))
             {
-                command.ExecuteNonQuery();
-            }
+                connection.Open();
 
-            using (var command = new SQLiteCommand(createTasksTableQuery, connection))
-            {
-                command.ExecuteNonQuery();
+                string createUsersTableQuery = @"
+                    CREATE TABLE IF NOT EXISTS Users (
+                        UserId INTEGER PRIMARY KEY AUTOINCREMENT,
+                        FirstName TEXT NOT NULL,
+                        LastName TEXT NOT NULL, 
+                        UserStat TEXT NOT NULL,
+                        TeamLeadId INTEGER
+                    )";
+
+                string createTasksTableQuery = @"
+                    CREATE TABLE IF NOT EXISTS Tasks (
+                        TaskId INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Title TEXT NOT NULL,
+                        Description TEXT,
+                        Status TEXT,
+                        EstimatedTime INTEGER,
+                        Notes TEXT,
+                        UserId INTEGER,
+                        FOREIGN KEY (UserId) REFERENCES Users (UserId)
+                    )";
+
+                using (var command = new SQLiteCommand(createUsersTableQuery, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+
+                using (var command = new SQLiteCommand(createTasksTableQuery, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+
+                Console.WriteLine("Database and tables created successfully.");
             }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred while creating the database: {ex.Message}");
         }
     }
 }
