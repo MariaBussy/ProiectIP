@@ -16,18 +16,19 @@ namespace DataBase
                 {
                     connection.Open();
                     string query = @"
-                    INSERT INTO Tasks (Title, Description, Status, EstimatedTime, Notes, UserId) 
-                    VALUES (@Title, @Description, @Status, @EstimatedTime, @Notes, @UserId)";
+                    INSERT INTO Tasks (NumeTask, DataAsignarii, OreLogate, DescriereTask, NumeAssigner) 
+                    VALUES (@NumeTask, @DataAsignarii, @OreLogate, @DescriereTask, @NumeAssigner);
+                    SELECT last_insert_rowid()";
                     using (var command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@Title", task.Title);
-                        command.Parameters.AddWithValue("@Description", task.Description);
-                        command.Parameters.AddWithValue("@Status", task.Status);
-                        command.Parameters.AddWithValue("@EstimatedTime", task.EstimatedTime);
-                        command.Parameters.AddWithValue("@Notes", task.Notes);
-                        command.Parameters.AddWithValue("@UserId", task.UserId);
-                        command.ExecuteNonQuery();
+                        command.Parameters.AddWithValue("@NumeTask", task.NumeTask);
+                        command.Parameters.AddWithValue("@DataAsignarii", DateTime.Now);
+                        command.Parameters.AddWithValue("@OreLogate", 0);
+                        command.Parameters.AddWithValue("@DescriereTask", task.DescriereTask);
+                        command.Parameters.AddWithValue("@NumeAssigner", task.NumeAssigner);
+                        task.TaskId = Convert.ToInt32(command.ExecuteScalar());
                     }
+
                 }
                 Console.WriteLine("Task created successfully.");
             }
@@ -35,44 +36,6 @@ namespace DataBase
             {
                 Console.WriteLine($"An error occurred while creating the task: {ex.Message}");
             }
-        }
-
-        public List<Task> GetAllTasks(int userId)
-        {
-            var tasks = new List<Task>();
-            try
-            {
-                using (var connection = new SQLiteConnection(connectionString))
-                {
-                    connection.Open();
-                    string query = "SELECT * FROM Tasks WHERE UserId = @UserId";
-                    using (var command = new SQLiteCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@UserId", userId);
-                        using (var reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                tasks.Add(new Task
-                                {
-                                    TaskId = reader.GetInt32(0),
-                                    Title = reader.GetString(1),
-                                    Description = reader.IsDBNull(2) ? null : reader.GetString(2),
-                                    Status = reader.IsDBNull(3) ? null : reader.GetString(3),
-                                    EstimatedTime = reader.IsDBNull(4) ? (int?)null : reader.GetInt32(4),
-                                    Notes = reader.IsDBNull(5) ? null : reader.GetString(5),
-                                    UserId = reader.IsDBNull(6) ? (int?)null : reader.GetInt32(6)
-                                });
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred while retrieving tasks: {ex.Message}");
-            }
-            return tasks;
         }
 
         public List<Task> GetAllTasks()
@@ -93,12 +56,11 @@ namespace DataBase
                                 tasks.Add(new Task
                                 {
                                     TaskId = reader.GetInt32(0),
-                                    Title = reader.GetString(1),
-                                    Description = reader.IsDBNull(2) ? null : reader.GetString(2),
-                                    Status = reader.IsDBNull(3) ? null : reader.GetString(3),
-                                    EstimatedTime = reader.IsDBNull(4) ? (int?)null : reader.GetInt32(4),
-                                    Notes = reader.IsDBNull(5) ? null : reader.GetString(5),
-                                    UserId = reader.IsDBNull(6) ? (int?)null : reader.GetInt32(6)
+                                    NumeTask = reader.GetString(1),
+                                    DataAsignarii = reader.GetDateTime(2),
+                                    OreLogate = reader.GetDouble(3),
+                                    DescriereTask = reader.GetString(4),
+                                    NumeAssigner = reader.GetString(5)
                                 });
                             }
                         }
@@ -131,12 +93,11 @@ namespace DataBase
                                 task = new Task
                                 {
                                     TaskId = reader.GetInt32(0),
-                                    Title = reader.GetString(1),
-                                    Description = reader.IsDBNull(2) ? null : reader.GetString(2),
-                                    Status = reader.IsDBNull(3) ? null : reader.GetString(3),
-                                    EstimatedTime = reader.IsDBNull(4) ? (int?)null : reader.GetInt32(4),
-                                    Notes = reader.IsDBNull(5) ? null : reader.GetString(5),
-                                    UserId = reader.IsDBNull(6) ? (int?)null : reader.GetInt32(6)
+                                    NumeTask = reader.GetString(1),
+                                    DataAsignarii = reader.GetDateTime(2),
+                                    OreLogate = reader.GetDouble(3),
+                                    DescriereTask = reader.GetString(4),
+                                    NumeAssigner = reader.GetString(5)
                                 };
                             }
                         }
@@ -158,17 +119,20 @@ namespace DataBase
                 {
                     connection.Open();
                     string query = @"
-                    UPDATE Tasks 
-                    SET Title = @Title, Description = @Description, Status = @Status, 
-                        EstimatedTime = @EstimatedTime, Notes = @Notes 
-                    WHERE TaskId = @TaskId";
+                        UPDATE Tasks 
+                        SET NumeTask = @NumeTask, 
+                            DataAsignarii = @DataAsignarii, 
+                            OreLogate = @OreLogate, 
+                            DescriereTask = @DescriereTask, 
+                            NumeAssigner = @NumeAssigner 
+                        WHERE TaskId = @TaskId";
                     using (var command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@Title", task.Title);
-                        command.Parameters.AddWithValue("@Description", (object)task.Description ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@Status", (object)task.Status ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@EstimatedTime", (object)task.EstimatedTime ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@Notes", (object)task.Notes ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@NumeTask", task.NumeTask);
+                        command.Parameters.AddWithValue("@DataAsignarii", task.DataAsignarii);
+                        command.Parameters.AddWithValue("@OreLogate", task.OreLogate);
+                        command.Parameters.AddWithValue("@DescriereTask", task.DescriereTask);
+                        command.Parameters.AddWithValue("@NumeAssigner", task.NumeAssigner);
                         command.Parameters.AddWithValue("@TaskId", task.TaskId);
                         command.ExecuteNonQuery();
                     }
@@ -188,11 +152,21 @@ namespace DataBase
                 using (var connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "DELETE FROM Tasks WHERE TaskId = @TaskId";
-                    using (var command = new SQLiteCommand(query, connection))
+
+                    // First, delete user tasks associated with the task
+                    string deleteUserTasksQuery = "DELETE FROM UserTasks WHERE TaskId = @TaskId";
+                    using (var deleteUserTasksCommand = new SQLiteCommand(deleteUserTasksQuery, connection))
                     {
-                        command.Parameters.AddWithValue("@TaskId", taskId);
-                        command.ExecuteNonQuery();
+                        deleteUserTasksCommand.Parameters.AddWithValue("@TaskId", taskId);
+                        deleteUserTasksCommand.ExecuteNonQuery();
+                    }
+
+                    // Then, delete the task itself
+                    string deleteTaskQuery = "DELETE FROM Tasks WHERE TaskId = @TaskId";
+                    using (var deleteTaskCommand = new SQLiteCommand(deleteTaskQuery, connection))
+                    {
+                        deleteTaskCommand.Parameters.AddWithValue("@TaskId", taskId);
+                        deleteTaskCommand.ExecuteNonQuery();
                     }
                 }
                 Console.WriteLine("Task deleted successfully.");

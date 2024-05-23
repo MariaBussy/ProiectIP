@@ -21,8 +21,7 @@ public class Database
                 string createUsersTableQuery = @"
                     CREATE TABLE IF NOT EXISTS Users (
                         UserId INTEGER PRIMARY KEY AUTOINCREMENT,
-                        FirstName TEXT NOT NULL,
-                        LastName TEXT NOT NULL, 
+                        Name TEXT NOT NULL,
                         UserStat TEXT NOT NULL,
                         TeamLeadId INTEGER
                     )";
@@ -30,13 +29,20 @@ public class Database
                 string createTasksTableQuery = @"
                     CREATE TABLE IF NOT EXISTS Tasks (
                         TaskId INTEGER PRIMARY KEY AUTOINCREMENT,
-                        Title TEXT NOT NULL,
-                        Description TEXT,
-                        Status TEXT,
-                        EstimatedTime INTEGER,
-                        Notes TEXT,
+                        NumeTask TEXT NOT NULL,
+                        DataAsignarii DATETIME,
+                        OreLogate REAL,
+                        DescriereTask TEXT,
+                        NumeAssigner TEXT
+                    )";
+
+                string createUserTasksTableQuery = @"
+                    CREATE TABLE IF NOT EXISTS UserTasks (
                         UserId INTEGER,
-                        FOREIGN KEY (UserId) REFERENCES Users (UserId)
+                        TaskId INTEGER,
+                        PRIMARY KEY (UserId, TaskId),
+                        FOREIGN KEY (UserId) REFERENCES Users (UserId),
+                        FOREIGN KEY (TaskId) REFERENCES Tasks (TaskId)
                     )";
 
                 using (var command = new SQLiteCommand(createUsersTableQuery, connection))
@@ -45,6 +51,11 @@ public class Database
                 }
 
                 using (var command = new SQLiteCommand(createTasksTableQuery, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+
+                using (var command = new SQLiteCommand(createUserTasksTableQuery, connection))
                 {
                     command.ExecuteNonQuery();
                 }

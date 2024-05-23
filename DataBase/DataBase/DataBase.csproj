@@ -69,6 +69,7 @@
     <Compile Include="TaskRepository.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserRepository.cs" />
+    <Compile Include="UserTaskRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

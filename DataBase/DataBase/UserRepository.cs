@@ -15,11 +15,10 @@ namespace DataBase
                 using (var connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "INSERT INTO Users (FirstName, LastName, UserStat, TeamLeadId) VALUES (@FirstName, @LastName, @UserStat, @TeamLeadId)";
+                    string query = "INSERT INTO Users (Name, UserStat, TeamLeadId) VALUES (@Name, @UserStat, @TeamLeadId)";
                     using (var command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@FirstName", user.FirstName);
-                        command.Parameters.AddWithValue("@LastName", user.LastName);
+                        command.Parameters.AddWithValue("@Name", user.Name);
                         command.Parameters.AddWithValue("@UserStat", user.UserStat.ToString());
                         command.Parameters.AddWithValue("@TeamLeadId", (object)user.TeamLeadId ?? DBNull.Value);
                         command.ExecuteNonQuery();
@@ -48,14 +47,18 @@ namespace DataBase
                         {
                             while (reader.Read())
                             {
-                                users.Add(new User
+                                User user = new User
                                 {
                                     UserId = reader.GetInt32(0),
-                                    FirstName = reader.GetString(1),
-                                    LastName = reader.GetString(2),
-                                    UserStat = (UserStats)Enum.Parse(typeof(UserStats), reader.GetString(3)),
-                                    TeamLeadId = reader.IsDBNull(4) ? (int?)null : reader.GetInt32(4)
-                                });
+                                    Name = reader.GetString(1),
+                                    UserStat = (UserStats)Enum.Parse(typeof(UserStats), reader.GetString(2)),
+                                    TeamLeadId = reader.IsDBNull(3) ? (int?)null : reader.GetInt32(3)
+                                };
+
+                                // Fetch tasks associated with this user
+                                user.Tasks = GetUserTasks(user.UserId);
+
+                                users.Add(user);
                             }
                         }
                     }
@@ -67,6 +70,51 @@ namespace DataBase
             }
             return users;
         }
+
+        // Method to fetch tasks associated with a specific user
+        private List<Task> GetUserTasks(int userId)
+        {
+            var tasks = new List<Task>();
+            try
+            {
+                using (var connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = @"
+                SELECT t.* 
+                FROM Tasks t
+                INNER JOIN UserTasks ut ON t.TaskId = ut.TaskId
+                WHERE ut.UserId = @UserId";
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserId", userId);
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Assuming Task object has a constructor that takes relevant parameters
+                                tasks.Add(new Task
+                                {
+                                    TaskId = reader.GetInt32(0),
+                                    NumeTask = reader.GetString(1),
+                                    DataAsignarii = reader.GetDateTime(2),
+                                    OreLogate = reader.GetDouble(3),
+                                    DescriereTask = reader.GetString(4),
+                                    NumeAssigner = reader.GetString(5)
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while retrieving tasks for user with ID {userId}: {ex.Message}");
+            }
+            return tasks;
+        }
+
+
 
         public User GetUserById(int userId)
         {
@@ -87,10 +135,9 @@ namespace DataBase
                                 user = new User
                                 {
                                     UserId = reader.GetInt32(0),
-                                    FirstName = reader.GetString(1),
-                                    LastName = reader.GetString(2),
-                                    UserStat = (UserStats)Enum.Parse(typeof(UserStats), reader.GetString(3)),
-                                    TeamLeadId = reader.IsDBNull(4) ? (int?)null : reader.GetInt32(4)
+                                    Name = reader.GetString(1),
+                                    UserStat = (UserStats)Enum.Parse(typeof(UserStats), reader.GetString(2)),
+                                    TeamLeadId = reader.IsDBNull(3) ? (int?)null : reader.GetInt32(3)
                                 };
                             }
                         }
@@ -112,16 +159,14 @@ namespace DataBase
                 {
                     connection.Open();
                     string query = @"
-                UPDATE Users 
-                SET FirstName = @FirstName, 
-                    LastName = @LastName, 
-                    UserStat = @UserStat, 
-                    TeamLeadId = @TeamLeadId 
-                WHERE UserId = @UserId";
+                        UPDATE Users 
+                        SET Name = @Name, 
+                            UserStat = @UserStat, 
+                            TeamLeadId = @TeamLeadId 
+                        WHERE UserId = @UserId";
                     using (var command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@FirstName", user.FirstName);
-                        command.Parameters.AddWithValue("@LastName", user.LastName);
+                        command.Parameters.AddWithValue("@Name", user.Name);
                         command.Parameters.AddWithValue("@UserStat", user.UserStat.ToString());
                         command.Parameters.AddWithValue("@TeamLeadId", (object)user.TeamLeadId ?? DBNull.Value);
                         command.Parameters.AddWithValue("@UserId", user.UserId);
@@ -143,19 +188,64 @@ namespace DataBase
                 using (var connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "DELETE FROM Users WHERE UserId = @UserId";
-                    using (var command = new SQLiteCommand(query, connection))
+
+                    // Delete user tasks first
+                    string deleteTasksQuery = "DELETE FROM UserTasks WHERE UserId = @UserId";
+                    using (var deleteTasksCommand = new SQLiteCommand(deleteTasksQuery, connection))
+                    {
+                        deleteTasksCommand.Parameters.AddWithValue("@UserId", userId);
+                        deleteTasksCommand.ExecuteNonQuery();
+                    }
+
+                    // Then delete the user
+                    string deleteUserQuery = "DELETE FROM Users WHERE UserId = @UserId";
+                    using (var command = new SQLiteCommand(deleteUserQuery, connection))
                     {
                         command.Parameters.AddWithValue("@UserId", userId);
                         command.ExecuteNonQuery();
                     }
                 }
-                Console.WriteLine("User deleted successfully.");
+                Console.WriteLine("User and associated tasks deleted successfully.");
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred while deleting the user: {ex.Message}");
             }
         }
+        public List<User> GetUsersByTeamLeadId(int teamLeadId)
+        {
+            var users = new List<User>();
+            try
+            {
+                using (var connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Users WHERE TeamLeadId = @TeamLeadId";
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@TeamLeadId", teamLeadId);
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                users.Add(new User
+                                {
+                                    UserId = reader.GetInt32(0),
+                                    Name = reader.GetString(1),
+                                    UserStat = (UserStats)Enum.Parse(typeof(UserStats), reader.GetString(2)),
+                                    TeamLeadId = reader.IsDBNull(3) ? (int?)null : reader.GetInt32(3)
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while retrieving users by TeamLeadId: {ex.Message}");
+            }
+            return users;
+        }
+
     }
 }

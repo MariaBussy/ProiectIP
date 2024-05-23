@@ -9,12 +9,11 @@ namespace DataBase
     public class Task
     {
         public int TaskId { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Status { get; set; }
-        public int? EstimatedTime { get; set; }
-        public string Notes { get; set; }
-        public int? UserId { get; set; }
+        public String NumeTask { get; set; }
+        public DateTime DataAsignarii { get; set; }
+        public double OreLogate { get; set; }
+        public String DescriereTask { get; set; }
+        public String NumeAssigner { get; set; }
     }
 
 }

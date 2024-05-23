@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DataBase
 {
@@ -9,6 +10,7 @@ namespace DataBase
             Database database = new Database(); // Ensure the database is created
             UserRepository userRepository = new UserRepository();
             TaskRepository taskRepository = new TaskRepository();
+            UserTaskRepository userTaskRepository = new UserTaskRepository();
 
             while (true)
             {
@@ -16,12 +18,15 @@ namespace DataBase
                 Console.WriteLine("1. Display all users");
                 Console.WriteLine("2. Display all tasks");
                 Console.WriteLine("3. Add a user");
-                Console.WriteLine("4. Add a task for a specific user");
+                Console.WriteLine("4. Add a task for specific users");
                 Console.WriteLine("5. Modify a user");
                 Console.WriteLine("6. Modify a task");
                 Console.WriteLine("7. Delete a user");
                 Console.WriteLine("8. Delete a task");
-                Console.WriteLine("9. Exit");
+                Console.WriteLine("9. Display all tasks for a user");
+                Console.WriteLine("10. Display all users for a task");
+                Console.WriteLine("11. Display users by teamleadId");
+                Console.WriteLine("12. Exit");
                 Console.Write("Select an option: ");
                 var input = Console.ReadLine();
 
@@ -37,7 +42,7 @@ namespace DataBase
                         AddUser(userRepository);
                         break;
                     case "4":
-                        AddTaskForUser(taskRepository);
+                        AddTaskForUser(taskRepository, userRepository, userTaskRepository);
                         break;
                     case "5":
                         ModifyUser(userRepository);
@@ -51,10 +56,19 @@ namespace DataBase
                     case "8":
                         DeleteTask(taskRepository);
                         break;
-                    case "9":
+                    case "12":
                         return;
+                    case "9":
+                        DisplayUserTasks(userRepository, taskRepository, userTaskRepository);
+                        break;
+                    case "10":
+                        DisplayTaskUsers(taskRepository, userTaskRepository);
+                        break;
                     default:
                         Console.WriteLine("Invalid option, please try again.");
+                        break;
+                    case "11":
+                        DisplayUsersByTeamLead(userRepository);
                         break;
                 }
             }
@@ -68,7 +82,7 @@ namespace DataBase
                 Console.WriteLine("\nAll Users:");
                 foreach (var user in users)
                 {
-                    Console.WriteLine($"UserId: {user.UserId}, FirstName: {user.FirstName}, LastName: {user.LastName}, UserStat: {user.UserStat}, TeamLeadId: {(user.TeamLeadId.HasValue ? user.TeamLeadId.ToString() : "N/A")}");
+                    Console.WriteLine($"UserId: {user.UserId}, Name: {user.Name}, UserStat: {user.UserStat}, TeamLeadId: {(user.TeamLeadId.HasValue ? user.TeamLeadId.ToString() : "N/A")}");
                 }
             }
             catch (Exception ex)
@@ -85,7 +99,7 @@ namespace DataBase
                 Console.WriteLine("\nAll Tasks:");
                 foreach (var task in tasks)
                 {
-                    Console.WriteLine($"TaskId: {task.TaskId}, Title: {task.Title}, Description: {task.Description}, Status: {task.Status}, EstimatedTime: {task.EstimatedTime}, Notes: {task.Notes}, UserId: {task.UserId}");
+                    Console.WriteLine($"TaskId: {task.TaskId}, NumeTask: {task.NumeTask}, DataAsignarii: {task.DataAsignarii}, OreLogate: {task.OreLogate}, DescriereTask: {task.DescriereTask}, NumeAssigner: {task.NumeAssigner}");
                 }
             }
             catch (Exception ex)
@@ -98,17 +112,23 @@ namespace DataBase
         {
             try
             {
-                Console.Write("Enter FirstName: ");
-                string firstName = Console.ReadLine();
-                Console.Write("Enter LastName: ");
-                string lastName = Console.ReadLine();
+                Console.Write("Enter Name: ");
+                string name = Console.ReadLine();
+                Console.Write("Enter UserStat (Manager/TeamLeader/Developer): ");
+                string userStatStr = Console.ReadLine();
+                UserStats userStat;
+                if (!Enum.TryParse(userStatStr, out userStat))
+                {
+                    Console.WriteLine("Invalid UserStat entered. User not added.");
+                    return;
+                }
 
                 User newUser = new User
                 {
-                    FirstName = firstName,
-                    LastName = lastName,
-                    UserStat = UserStats.Employee, // Default UserStat
-                    TeamLeadId = null
+                    Name = name,
+                    UserStat = userStat,
+                    TeamLeadId = null,
+                    Tasks = new List<Task>()
                 };
 
                 userRepository.CreateUser(newUser);
@@ -120,34 +140,43 @@ namespace DataBase
             }
         }
 
-        static void AddTaskForUser(TaskRepository taskRepository)
+        static void AddTaskForUser(TaskRepository taskRepository, UserRepository userRepository, UserTaskRepository userTaskRepository)
         {
             try
             {
-                Console.Write("Enter UserId for the task: ");
-                int userId = int.Parse(Console.ReadLine());
-                Console.Write("Enter Title for the task: ");
-                string title = Console.ReadLine();
-                Console.Write("Enter Description for the task: ");
-                string description = Console.ReadLine();
-                Console.Write("Enter Status for the task: ");
-                string status = Console.ReadLine();
-                Console.Write("Enter EstimatedTime for the task: ");
-                int estimatedTime = int.Parse(Console.ReadLine());
-                Console.Write("Enter Notes for the task: ");
-                string notes = Console.ReadLine();
+                Console.Write("Enter UserIds for the task (comma-separated): ");
+                string[] userIdsStr = Console.ReadLine().Split(',');
+                List<int> userIds = new List<int>();
+                foreach (var userIdStr in userIdsStr)
+                {
+                    if (int.TryParse(userIdStr, out int userId))
+                    {
+                        userIds.Add(userId);
+                    }
+                }
+
+
+                Console.Write("Enter NumeTask: ");
+                string numeTask = Console.ReadLine();
+                Console.Write("Enter DescriereTask: ");
+                string descriereTask = Console.ReadLine();
+                Console.Write("Enter NumeAssigner: ");
+                string numeAssigner = Console.ReadLine();
 
                 Task newTask = new Task
                 {
-                    Title = title,
-                    Description = description,
-                    Status = status,
-                    EstimatedTime = estimatedTime,
-                    Notes = notes,
-                    UserId = userId
+                    NumeTask = numeTask,
+                    DataAsignarii = DateTime.Now,
+                    OreLogate = 0,
+                    DescriereTask = descriereTask,
+                    NumeAssigner = numeAssigner
                 };
 
                 taskRepository.CreateTask(newTask);
+                foreach (int userId in userIds)
+                {
+                    userTaskRepository.AddUserTask(newTask.TaskId, userId);
+                }
                 Console.WriteLine("Task added successfully!");
             }
             catch (Exception ex)
@@ -155,52 +184,47 @@ namespace DataBase
                 Console.WriteLine($"An error occurred while adding a task: {ex.Message}");
             }
         }
-
         static void ModifyUser(UserRepository userRepository)
         {
             try
             {
                 Console.Write("Enter UserId of the user to modify: ");
                 int userId = int.Parse(Console.ReadLine());
-
-                // Collect new details
-                Console.Write("Enter new FirstName: ");
-                string newFirstName = Console.ReadLine();
-                Console.Write("Enter new LastName: ");
-                string newLastName = Console.ReadLine();
-                Console.Write("Enter new UserStat (Manager/TeamLeader/Employee): ");
-                string newUserStatStr = Console.ReadLine();
-                UserStats newUserStat;
-                if (!Enum.TryParse(newUserStatStr, out newUserStat))
+                var user = userRepository.GetUserById(userId);
+                if (user == null)
                 {
-                    Console.WriteLine("Invalid UserStat entered. User not modified.");
+                    Console.WriteLine("User not found.");
                     return;
                 }
 
-                int? newTeamLeadId = null;
+                Console.Write("Enter new Name: ");
+                string newName = Console.ReadLine();
+                Console.Write("Enter new UserStat (Manager/TeamLeader/Developer): ");
+                UserStats newUserStat;
+                while (!Enum.TryParse(Console.ReadLine(), out newUserStat))
+                {
+                    Console.Write("Invalid UserStat. Enter new UserStat (Manager/TeamLeader/Developer): ");
+                }
+
                 Console.Write("Enter new TeamLeadId (leave blank for none): ");
+                int? newTeamLeadId = null;
                 string newTeamLeadIdStr = Console.ReadLine();
                 if (!string.IsNullOrEmpty(newTeamLeadIdStr))
                 {
-                    if (!int.TryParse(newTeamLeadIdStr, out int teamLeadId))
+                    if (int.TryParse(newTeamLeadIdStr, out int teamLeadId))
                     {
-                        Console.WriteLine("Invalid TeamLeadId entered. User not modified.");
-                        return;
+                        newTeamLeadId = teamLeadId;
                     }
-                    newTeamLeadId = teamLeadId;
                 }
 
-                // Create modified user object
                 User modifiedUser = new User
                 {
                     UserId = userId,
-                    FirstName = newFirstName,
-                    LastName = newLastName,
+                    Name = newName,
                     UserStat = newUserStat,
                     TeamLeadId = newTeamLeadId
                 };
 
-                // Update user
                 userRepository.UpdateUser(modifiedUser);
                 Console.WriteLine("User modified successfully!");
             }
@@ -216,25 +240,30 @@ namespace DataBase
             {
                 Console.Write("Enter TaskId of the task to modify: ");
                 int taskId = int.Parse(Console.ReadLine());
-                Console.Write("Enter new Title: ");
-                string newTitle = Console.ReadLine();
-                Console.Write("Enter new Description: ");
-                string newDescription = Console.ReadLine();
-                Console.Write("Enter new Status: ");
-                string newStatus = Console.ReadLine();
-                Console.Write("Enter new EstimatedTime: ");
-                int newEstimatedTime = int.Parse(Console.ReadLine());
-                Console.Write("Enter new Notes: ");
-                string newNotes = Console.ReadLine();
+                var task = taskRepository.GetTaskById(taskId);
+                if (task == null)
+                {
+                    Console.WriteLine("Task not found.");
+                    return;
+                }
+
+                Console.Write("Enter new NumeTask: ");
+                string newNumeTask = Console.ReadLine();
+                Console.Write("Enter new DescriereTask: ");
+                string newDescriereTask = Console.ReadLine();
+                Console.Write("Enter new OreLogate: ");
+                double newOreLogate = double.Parse(Console.ReadLine());
+                Console.Write("Enter new NumeAssigner: ");
+                string newNumeAssigner = Console.ReadLine();
 
                 Task modifiedTask = new Task
                 {
                     TaskId = taskId,
-                    Title = newTitle,
-                    Description = newDescription,
-                    Status = newStatus,
-                    EstimatedTime = newEstimatedTime,
-                    Notes = newNotes
+                    NumeTask = newNumeTask,
+                    DescriereTask = newDescriereTask,
+                    OreLogate = newOreLogate,
+                    NumeAssigner = newNumeAssigner,
+                    DataAsignarii = task.DataAsignarii
                 };
 
                 taskRepository.UpdateTask(modifiedTask);
@@ -277,5 +306,76 @@ namespace DataBase
                 Console.WriteLine($"An error occurred while deleting the task: {ex.Message}");
             }
         }
+        static void DisplayUserTasks(UserRepository userRepository, TaskRepository taskRepository, UserTaskRepository userTaskRepository)
+        {
+            try
+            {
+                Console.Write("Enter UserId to display tasks: ");
+                int userId = int.Parse(Console.ReadLine());
+
+                var user = userRepository.GetUserById(userId);
+                if (user == null)
+                {
+                    Console.WriteLine("User not found.");
+                    return;
+                }
+
+                var tasks = userTaskRepository.GetUserTasks(userId);
+
+                Console.WriteLine($"\nTasks for User '{user.Name}':");
+                foreach (var task in tasks)
+                {
+                    Console.WriteLine($"TaskId: {task.TaskId}, NumeTask: {task.NumeTask}, DescriereTask: {task.DescriereTask}, NumeAssigner: {task.NumeAssigner}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while displaying user tasks: {ex.Message}");
+            }
+        }
+        static void DisplayTaskUsers(TaskRepository taskRepository, UserTaskRepository userTaskRepository)
+        {
+            try
+            {
+                Console.Write("Enter TaskId to display users assigned to the task: ");
+                int taskId = int.Parse(Console.ReadLine());
+                var task = taskRepository.GetTaskById(taskId);
+                if (task == null)
+                {
+                    Console.WriteLine("Task not found.");
+                    return;
+                }
+
+                var users = userTaskRepository.GetUsersByTaskId(taskId);
+                Console.WriteLine($"\nUsers assigned to Task {task.NumeTask} (TaskID: {task.TaskId}):");
+                foreach (var user in users)
+                {
+                    Console.WriteLine($"UserId: {user.UserId}, Name: {user.Name}, UserStat: {user.UserStat}, TeamLeadId: {(user.TeamLeadId.HasValue ? user.TeamLeadId.ToString() : "N/A")}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while displaying users for the task: {ex.Message}");
+            }
+        }
+        static void DisplayUsersByTeamLead(UserRepository userRepository)
+        {
+            try
+            {
+                Console.Write("Enter TeamLeadId to display users under the team lead: ");
+                int teamLeadId = int.Parse(Console.ReadLine());
+                var users = userRepository.GetUsersByTeamLeadId(teamLeadId);
+                Console.WriteLine($"\nUsers under TeamLeadId {teamLeadId}:");
+                foreach (var user in users)
+                {
+                    Console.WriteLine($"UserId: {user.UserId}, Name: {user.Name}, UserStat: {user.UserStat}, TeamLeadId: {(user.TeamLeadId.HasValue ? user.TeamLeadId.ToString() : "N/A")}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while displaying users by TeamLeadId: {ex.Message}");
+            }
+        }
+
     }
 }
