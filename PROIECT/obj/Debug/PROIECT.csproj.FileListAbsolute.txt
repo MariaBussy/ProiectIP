@@ -1,0 +1,7 @@
+C:\Users\Aso\source\repos\PROIECT\PROIECT\obj\Debug\PROIECT.csproj.AssemblyReference.cache
+C:\Users\Aso\source\repos\PROIECT\PROIECT\obj\Debug\PROIECT.csproj.CoreCompileInputs.cache
+C:\Users\Aso\source\repos\PROIECT\PROIECT\bin\Debug\PROIECT.exe.config
+C:\Users\Aso\source\repos\PROIECT\PROIECT\bin\Debug\PROIECT.exe
+C:\Users\Aso\source\repos\PROIECT\PROIECT\bin\Debug\PROIECT.pdb
+C:\Users\Aso\source\repos\PROIECT\PROIECT\obj\Debug\PROIECT.exe
+C:\Users\Aso\source\repos\PROIECT\PROIECT\obj\Debug\PROIECT.pdb
