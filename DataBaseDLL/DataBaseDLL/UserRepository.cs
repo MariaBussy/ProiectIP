@@ -22,12 +22,14 @@ namespace DataBaseDLL
                 using (var connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "INSERT INTO Users (Name, UserStat, TeamLeadId) VALUES (@Name, @UserStat, @TeamLeadId)";
+                    string query = "INSERT INTO Users (Name, UserStat, TeamLeadId, Username, Password) VALUES (@Name, @UserStat, @TeamLeadId, @Username, @Password)";
                     using (var command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Name", user.Name);
                         command.Parameters.AddWithValue("@UserStat", user.UserStat.ToString());
                         command.Parameters.AddWithValue("@TeamLeadId", (object)user.TeamLeadId ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@Username", user.Username); // Adăugarea parametrului pentru username
+                        command.Parameters.AddWithValue("@Password", user.Password); // Adăugarea parametrului pentru parolă
                         command.ExecuteNonQuery();
                     }
                 }
@@ -38,6 +40,7 @@ namespace DataBaseDLL
                 Console.WriteLine($"An error occurred while creating the user: {ex.Message}");
             }
         }
+
 
         /// <summary>
         /// Obține o listă cu toți utilizatorii din baza de date.
@@ -183,16 +186,20 @@ namespace DataBaseDLL
                 {
                     connection.Open();
                     string query = @"
-                        UPDATE Users 
-                        SET Name = @Name, 
-                            UserStat = @UserStat, 
-                            TeamLeadId = @TeamLeadId 
-                        WHERE UserId = @UserId";
+                UPDATE Users 
+                SET Name = @Name, 
+                    UserStat = @UserStat, 
+                    TeamLeadId = @TeamLeadId,
+                    Username = @Username, 
+                    Password = @Password 
+                WHERE UserId = @UserId";
                     using (var command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Name", user.Name);
                         command.Parameters.AddWithValue("@UserStat", user.UserStat.ToString());
                         command.Parameters.AddWithValue("@TeamLeadId", (object)user.TeamLeadId ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@Username", user.Username); // Adăugarea parametrului pentru username
+                        command.Parameters.AddWithValue("@Password", user.Password); // Adăugarea parametrului pentru parolă
                         command.Parameters.AddWithValue("@UserId", user.UserId);
                         command.ExecuteNonQuery();
                     }
@@ -204,7 +211,6 @@ namespace DataBaseDLL
                 Console.WriteLine($"An error occurred while updating the user: {ex.Message}");
             }
         }
-
         /// <summary>
         /// Șterge un utilizator din baza de date împreună cu toate task-urile asociate acestuia.
         /// </summary>

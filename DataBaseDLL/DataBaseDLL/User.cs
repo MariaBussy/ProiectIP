@@ -25,6 +25,8 @@ namespace DataBaseDLL
         public string Name { get; set; }
         public UserStats UserStat { get; set; }
         public int? TeamLeadId { get; set; }
+        public string Username { get; set; } 
+        public string Password { get; set; } 
 
         public List<Task> Tasks { get; set; }
 

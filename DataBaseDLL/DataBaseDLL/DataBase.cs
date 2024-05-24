@@ -29,7 +29,9 @@ public class Database
                         UserId INTEGER PRIMARY KEY AUTOINCREMENT,
                         Name TEXT NOT NULL,
                         UserStat TEXT NOT NULL,
-                        TeamLeadId INTEGER
+                        TeamLeadId INTEGER,
+                        Username TEXT NOT NULL UNIQUE,
+                        Password TEXT NOT NULL
                     )";
 
                 string createTasksTableQuery = @"
