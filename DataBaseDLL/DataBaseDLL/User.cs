@@ -6,12 +6,19 @@ using System.Threading.Tasks;
 
 namespace DataBaseDLL
 {
+    /// <summary>
+    /// Enumerație pentru starea utilizatorului.
+    /// </summary>
     public enum UserStats
     {
         Manager = 0,
         TeamLeader = 1,
         Developer = 2
     }
+
+    /// <summary>
+    /// Clasă care reprezintă un utilizator în sistemul de baze de date.
+    /// </summary>
     public class User
     {
         public int UserId { get; set; }

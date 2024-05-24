@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Data.SQLite;
 
+/// <summary>
+/// Clasa responsabilă de gestionarea bazei de date și a tabelelor asociate.
+/// </summary>
 public class Database
 {
     private string connectionString = "Data Source=database.sqlite;Version=3;";
@@ -10,6 +13,9 @@ public class Database
         CreateDatabase();
     }
 
+    /// <summary>
+    /// Creează baza de date și tabelele asociate (dacă nu există).
+    /// </summary>
     private void CreateDatabase()
     {
         try

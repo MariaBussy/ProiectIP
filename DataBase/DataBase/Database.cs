@@ -7,7 +7,15 @@ public class Database
 
     public Database()
     {
-        CreateDatabase();
+        try
+        {
+            CreateDatabase();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred while instantiating the database: {ex.Message}");
+            throw; // rethrow the exception
+        }
     }
 
     private void CreateDatabase()

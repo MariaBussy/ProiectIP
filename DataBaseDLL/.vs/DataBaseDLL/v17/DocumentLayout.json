@@ -3,28 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A03864D3-62E1-41BB-9853-71998B964619}|DataBaseDLL\\DataBaseDLL.csproj|c:\\users\\rex\\facultate\\anul iii\\semestrul 2\\ip\\proiect\\proiectip\\databasedll\\databasedll\\usertaskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A03864D3-62E1-41BB-9853-71998B964619}|DataBaseDLL\\DataBaseDLL.csproj|solutionrelative:databasedll\\usertaskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A03864D3-62E1-41BB-9853-71998B964619}|DataBaseDLL\\DataBaseDLL.csproj|c:\\users\\rex\\facultate\\anul iii\\semestrul 2\\ip\\proiect\\proiectip\\databasedll\\databasedll\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A03864D3-62E1-41BB-9853-71998B964619}|DataBaseDLL\\DataBaseDLL.csproj|solutionrelative:databasedll\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A03864D3-62E1-41BB-9853-71998B964619}|DataBaseDLL\\DataBaseDLL.csproj|c:\\users\\rex\\facultate\\anul iii\\semestrul 2\\ip\\proiect\\proiectip\\databasedll\\databasedll\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A03864D3-62E1-41BB-9853-71998B964619}|DataBaseDLL\\DataBaseDLL.csproj|solutionrelative:databasedll\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A03864D3-62E1-41BB-9853-71998B964619}|DataBaseDLL\\DataBaseDLL.csproj|c:\\users\\rex\\facultate\\anul iii\\semestrul 2\\ip\\proiect\\proiectip\\databasedll\\databasedll\\taskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A03864D3-62E1-41BB-9853-71998B964619}|DataBaseDLL\\DataBaseDLL.csproj|solutionrelative:databasedll\\taskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A03864D3-62E1-41BB-9853-71998B964619}|DataBaseDLL\\DataBaseDLL.csproj|c:\\users\\rex\\facultate\\anul iii\\semestrul 2\\ip\\proiect\\proiectip\\databasedll\\databasedll\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A03864D3-62E1-41BB-9853-71998B964619}|DataBaseDLL\\DataBaseDLL.csproj|solutionrelative:databasedll\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C621E256-C9E4-47D4-BF56-DD1C273FA6A3}|UnitTestDataBase\\UnitTestDataBase.csproj|c:\\users\\rex\\facultate\\anul iii\\semestrul 2\\ip\\proiect\\proiectip\\databasedll\\unittestdatabase\\databasetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C621E256-C9E4-47D4-BF56-DD1C273FA6A3}|UnitTestDataBase\\UnitTestDataBase.csproj|solutionrelative:unittestdatabase\\databasetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A03864D3-62E1-41BB-9853-71998B964619}|DataBaseDLL\\DataBaseDLL.csproj|c:\\users\\rex\\facultate\\anul iii\\semestrul 2\\ip\\proiect\\proiectip\\databasedll\\databasedll\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A03864D3-62E1-41BB-9853-71998B964619}|DataBaseDLL\\DataBaseDLL.csproj|solutionrelative:databasedll\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C621E256-C9E4-47D4-BF56-DD1C273FA6A3}|UnitTestDataBase\\UnitTestDataBase.csproj|c:\\users\\rex\\facultate\\anul iii\\semestrul 2\\ip\\proiect\\proiectip\\databasedll\\unittestdatabase\\userrepositorytest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C621E256-C9E4-47D4-BF56-DD1C273FA6A3}|UnitTestDataBase\\UnitTestDataBase.csproj|solutionrelative:unittestdatabase\\userrepositorytest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -37,86 +25,52 @@
           "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserRepositoryTest.cs",
+              "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\UnitTestDataBase\\UserRepositoryTest.cs",
+              "RelativeDocumentMoniker": "UnitTestDataBase\\UserRepositoryTest.cs",
+              "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\UnitTestDataBase\\UserRepositoryTest.cs",
+              "RelativeToolTip": "UnitTestDataBase\\UserRepositoryTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T18:17:04.494Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UserTaskRepository.cs",
-              "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\DataBaseDLL\\UserTaskRepository.cs",
-              "RelativeDocumentMoniker": "DataBaseDLL\\UserTaskRepository.cs",
-              "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\DataBaseDLL\\UserTaskRepository.cs",
-              "RelativeToolTip": "DataBaseDLL\\UserTaskRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T16:48:24.911Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\DataBaseDLL\\UserRepository.cs",
-              "RelativeDocumentMoniker": "DataBaseDLL\\UserRepository.cs",
-              "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\DataBaseDLL\\UserRepository.cs",
-              "RelativeToolTip": "DataBaseDLL\\UserRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T16:47:57.63Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "TaskRepository.cs",
               "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\DataBaseDLL\\TaskRepository.cs",
               "RelativeDocumentMoniker": "DataBaseDLL\\TaskRepository.cs",
               "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\DataBaseDLL\\TaskRepository.cs",
               "RelativeToolTip": "DataBaseDLL\\TaskRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAVAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T16:47:37.454Z",
+              "WhenOpened": "2024-05-24T20:12:03.418Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DataBase.cs",
-              "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\DataBaseDLL\\DataBase.cs",
-              "RelativeDocumentMoniker": "DataBaseDLL\\DataBase.cs",
-              "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\DataBaseDLL\\DataBase.cs",
-              "RelativeToolTip": "DataBaseDLL\\DataBase.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAqwEcAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "DataBaseTest.cs",
+              "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\UnitTestDataBase\\DataBaseTest.cs",
+              "RelativeDocumentMoniker": "UnitTestDataBase\\DataBaseTest.cs",
+              "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\UnitTestDataBase\\DataBaseTest.cs",
+              "RelativeToolTip": "UnitTestDataBase\\DataBaseTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGUAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T16:47:10.059Z",
+              "WhenOpened": "2024-05-24T18:47:07.131Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\DataBaseDLL\\User.cs",
-              "RelativeDocumentMoniker": "DataBaseDLL\\User.cs",
-              "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\DataBaseDLL\\User.cs",
-              "RelativeToolTip": "DataBaseDLL\\User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T16:45:44.343Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Task.cs",
-              "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\DataBaseDLL\\Task.cs",
-              "RelativeDocumentMoniker": "DataBaseDLL\\Task.cs",
-              "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBaseDLL\\DataBaseDLL\\Task.cs",
-              "RelativeToolTip": "DataBaseDLL\\Task.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAmwAYAAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T16:46:21.709Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
             }
           ]
         },
