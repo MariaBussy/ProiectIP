@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML><HEAD></HEAD><BODY>
+<OBJECT type="text/site properties">
+<param name="FrameName" value="right">
+</OBJECT>
+<UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html#a33b397c16ade5652cdfb294f2e2528be"><param name="Name" value="DataAsignarii"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html#afd06250aafedd1a14e02adbd52446998"><param name="Name" value="DescriereTask"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html#a62a3b3684446f0226dee04f74c340835"><param name="Name" value="NumeAssigner"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html#a6476b49523a2a2ce55fb27b0f9eb8066"><param name="Name" value="NumeTask"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html#a27d68bab0faeb99e59d614ff4f2b64f7"><param name="Name" value="OreLogate"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html#aa197ac56170b7f9cf3fe956a0b5eae9c"><param name="Name" value="Task(in String nume, in String numePersoana)"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="namespace_task_library.html"><param name="Name" value="TaskLibrary"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html"><param name="Name" value="TaskLibrary::Task"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html"><param name="Name" value="TaskLibrary::Task"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html#a33b397c16ade5652cdfb294f2e2528be"><param name="Name" value="DataAsignarii"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html"><param name="Name" value="TaskLibrary::Task"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html#afd06250aafedd1a14e02adbd52446998"><param name="Name" value="DescriereTask"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html"><param name="Name" value="TaskLibrary::Task"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html#a62a3b3684446f0226dee04f74c340835"><param name="Name" value="NumeAssigner"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html"><param name="Name" value="TaskLibrary::Task"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html#a6476b49523a2a2ce55fb27b0f9eb8066"><param name="Name" value="NumeTask"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html"><param name="Name" value="TaskLibrary::Task"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html#a27d68bab0faeb99e59d614ff4f2b64f7"><param name="Name" value="OreLogate"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html"><param name="Name" value="TaskLibrary::Task"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_task_library_1_1_task.html#aa197ac56170b7f9cf3fe956a0b5eae9c"><param name="Name" value="Task(in String nume, in String numePersoana)"></OBJECT>
+  </UL>
+</UL>
+</BODY>
+</HTML>

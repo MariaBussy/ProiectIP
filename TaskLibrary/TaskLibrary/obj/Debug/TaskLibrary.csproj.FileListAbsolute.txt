@@ -4,3 +4,4 @@ D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskLibrary\obj\Debug\TaskLibrary
 D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskLibrary\obj\Debug\TaskLibrary.csproj.CoreCompileInputs.cache
 D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskLibrary\obj\Debug\TaskLibrary.dll
 D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskLibrary\obj\Debug\TaskLibrary.pdb
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskLibrary\bin\Debug\TaskLibrary.xml

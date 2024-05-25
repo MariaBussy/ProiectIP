@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML><HEAD></HEAD><BODY>
+<OBJECT type="text/site properties">
+<param name="FrameName" value="right">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap"><param name="Name" value="Packages"><param name="Local" value="namespaces.html"><param name="ImageNumber" value="1"></OBJECT>
+  <UL>
+  <LI><OBJECT type="text/sitemap"><param name="Name" value="Package List"><param name="Local" value="namespaces.html#top"><param name="ImageNumber" value="1"></OBJECT>
+    <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="TaskLibrary"><param name="Local" value="namespace_task_library.html"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Task"><param name="Local" value="class_task_library_1_1_task.html"><param name="ImageNumber" value="1"></OBJECT>
+        <UL>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="Task"><param name="Local" value="class_task_library_1_1_task.html#aa197ac56170b7f9cf3fe956a0b5eae9c"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="DataAsignarii"><param name="Local" value="class_task_library_1_1_task.html#a33b397c16ade5652cdfb294f2e2528be"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="DescriereTask"><param name="Local" value="class_task_library_1_1_task.html#afd06250aafedd1a14e02adbd52446998"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="NumeAssigner"><param name="Local" value="class_task_library_1_1_task.html#a62a3b3684446f0226dee04f74c340835"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="NumeTask"><param name="Local" value="class_task_library_1_1_task.html#a6476b49523a2a2ce55fb27b0f9eb8066"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="OreLogate"><param name="Local" value="class_task_library_1_1_task.html#a27d68bab0faeb99e59d614ff4f2b64f7"><param name="ImageNumber" value="11"></OBJECT>
+        </UL>
+      </UL>
+    </UL>
+  </UL>
+<LI><OBJECT type="text/sitemap"><param name="Name" value="Classes"><param name="Local" value="annotated.html"><param name="ImageNumber" value="1"></OBJECT>
+  <UL>
+  <LI><OBJECT type="text/sitemap"><param name="Name" value="Class List"><param name="Local" value="annotated.html#top"><param name="ImageNumber" value="1"></OBJECT>
+    <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="TaskLibrary"><param name="Local" value="namespace_task_library.html"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="Task"><param name="Local" value="class_task_library_1_1_task.html"><param name="ImageNumber" value="1"></OBJECT>
+        <UL>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="Task"><param name="Local" value="class_task_library_1_1_task.html#aa197ac56170b7f9cf3fe956a0b5eae9c"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="DataAsignarii"><param name="Local" value="class_task_library_1_1_task.html#a33b397c16ade5652cdfb294f2e2528be"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="DescriereTask"><param name="Local" value="class_task_library_1_1_task.html#afd06250aafedd1a14e02adbd52446998"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="NumeAssigner"><param name="Local" value="class_task_library_1_1_task.html#a62a3b3684446f0226dee04f74c340835"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="NumeTask"><param name="Local" value="class_task_library_1_1_task.html#a6476b49523a2a2ce55fb27b0f9eb8066"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="OreLogate"><param name="Local" value="class_task_library_1_1_task.html#a27d68bab0faeb99e59d614ff4f2b64f7"><param name="ImageNumber" value="11"></OBJECT>
+        </UL>
+      </UL>
+    </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Name" value="Class Index"><param name="Local" value="classes.html"><param name="ImageNumber" value="11"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Name" value="Class Members"><param name="Local" value="functions.html"><param name="ImageNumber" value="1"></OBJECT>
+    <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="All"><param name="Local" value="functions.html#top"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Functions"><param name="Local" value="functions_func.html"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Properties"><param name="Local" value="functions_prop.html"><param name="ImageNumber" value="11"></OBJECT>
+    </UL>
+  </UL>
+</UL>
+</BODY>
+</HTML>
