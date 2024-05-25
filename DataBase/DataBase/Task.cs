@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataBase
 {
+    /// <summary>
+    /// Clasă care reprezintă o sarcină în sistemul de baze de date.
+    /// </summary>
     public class Task
     {
         public int TaskId { get; set; }

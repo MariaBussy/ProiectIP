@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataBase;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
@@ -7,10 +8,19 @@ using System.Threading.Tasks;
 
 namespace DataBase
 {
+    /// <summary>
+    /// Clasă care se ocupă de operațiile legate de atribuirea task-urilor utilizatorilor în baza de date.
+    /// </summary>
+
     public class UserTaskRepository
     {
         private string connectionString = "Data Source=database.sqlite;Version=3;";
 
+        /// <summary>
+        /// Adaugă o atribuire între un task și un utilizator în baza de date.
+        /// </summary>
+        /// <param name="taskId">ID-ul task-ului.</param>
+        /// <param name="userId">ID-ul utilizatorului.</param>
         public void AddUserTask(int taskId, int userId)
         {
             try
@@ -38,6 +48,11 @@ namespace DataBase
             }
         }
 
+        /// <summary>
+        /// Șterge o atribuire între un task și un utilizator din baza de date.
+        /// </summary>
+        /// <param name="taskId">ID-ul task-ului.</param>
+        /// <param name="userId">ID-ul utilizatorului.</param>
         public void DeleteUserTask(int taskId, int userId)
         {
             try
@@ -65,6 +80,13 @@ namespace DataBase
             }
         }
 
+        /// <summary>
+        /// Actualizează atribuirea unui task către un utilizator în baza de date.
+        /// </summary>
+        /// <param name="oldTaskId">ID-ul vechi al task-ului.</param>
+        /// <param name="oldUserId">ID-ul vechi al utilizatorului.</param>
+        /// <param name="newTaskId">ID-ul nou al task-ului.</param>
+        /// <param name="newUserId">ID-ul nou al utilizatorului.</param>
         public void UpdateUserTask(int oldTaskId, int oldUserId, int newTaskId, int newUserId)
         {
             try
@@ -93,6 +115,11 @@ namespace DataBase
                 Console.WriteLine($"An error occurred while updating the Task assignment: {ex.Message}");
             }
         }
+        /// <summary>
+        /// Obține lista de task-uri atribuite unui utilizator.
+        /// </summary>
+        /// <param name="userId">ID-ul utilizatorului.</param>
+        /// <returns>O listă de task-uri atribuite utilizatorului.</returns>
         public List<Task> GetUserTasks(int userId)
         {
             var tasks = new List<Task>();
@@ -131,6 +158,11 @@ namespace DataBase
             }
             return tasks;
         }
+        /// <summary>
+        /// Obține lista de utilizatori care au atribuit un anumit task.
+        /// </summary>
+        /// <param name="taskId">ID-ul task-ului.</param>
+        /// <returns>O listă de utilizatori care au atribuit task-ul.</returns>
         public List<User> GetUsersByTaskId(int taskId)
         {
             var users = new List<User>();

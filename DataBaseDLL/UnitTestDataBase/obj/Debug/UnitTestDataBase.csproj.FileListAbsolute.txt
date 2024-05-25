@@ -38,3 +38,4 @@ C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBaseDLL\Uni
 C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBaseDLL\UnitTestDataBase\obj\Debug\UnitTest.56E2CFC6.Up2Date
 C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBaseDLL\UnitTestDataBase\obj\Debug\UnitTestDataBase.dll
 C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBaseDLL\UnitTestDataBase\obj\Debug\UnitTestDataBase.pdb
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBaseDLL\UnitTestDataBase\bin\Debug\TaskLibrary.dll

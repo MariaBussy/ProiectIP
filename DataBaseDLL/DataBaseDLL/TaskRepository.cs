@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using TaskLibrary;
 
 namespace DataBaseDLL
 {
@@ -16,7 +17,7 @@ namespace DataBaseDLL
         /// Creează un nou task în baza de date.
         /// </summary>
         /// <param name="task">Task-ul de creat.</param>
-        public void CreateTask(Task task)
+        public void CreateTask(TaskLibrary.Task task)
         {
             try
             {
@@ -25,8 +26,7 @@ namespace DataBaseDLL
                     connection.Open();
                     string query = @"
                     INSERT INTO Tasks (NumeTask, DataAsignarii, OreLogate, DescriereTask, NumeAssigner) 
-                    VALUES (@NumeTask, @DataAsignarii, @OreLogate, @DescriereTask, @NumeAssigner);
-                    SELECT last_insert_rowid()";
+                    VALUES (@NumeTask, @DataAsignarii, @OreLogate, @DescriereTask, @NumeAssigner)";
                     using (var command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@NumeTask", task.NumeTask);
@@ -34,7 +34,6 @@ namespace DataBaseDLL
                         command.Parameters.AddWithValue("@OreLogate", 0);
                         command.Parameters.AddWithValue("@DescriereTask", task.DescriereTask);
                         command.Parameters.AddWithValue("@NumeAssigner", task.NumeAssigner);
-                        task.TaskId = Convert.ToInt32(command.ExecuteScalar());
                     }
 
                 }
@@ -65,15 +64,12 @@ namespace DataBaseDLL
                         {
                             while (reader.Read())
                             {
-                                tasks.Add(new Task
+                                var task = new Task(reader.GetString(1), reader.GetString(5))
                                 {
-                                    TaskId = reader.GetInt32(0),
-                                    NumeTask = reader.GetString(1),
-                                    DataAsignarii = reader.GetDateTime(2),
                                     OreLogate = reader.GetDouble(3),
-                                    DescriereTask = reader.GetString(4),
-                                    NumeAssigner = reader.GetString(5)
-                                });
+                                    DescriereTask = reader.GetString(4)
+                                };
+                                tasks.Add(task);
                             }
                         }
                     }
@@ -107,14 +103,10 @@ namespace DataBaseDLL
                         {
                             if (reader.Read())
                             {
-                                task = new Task
+                                task = new Task(reader.GetString(1), reader.GetString(5))
                                 {
-                                    TaskId = reader.GetInt32(0),
-                                    NumeTask = reader.GetString(1),
-                                    DataAsignarii = reader.GetDateTime(2),
                                     OreLogate = reader.GetDouble(3),
-                                    DescriereTask = reader.GetString(4),
-                                    NumeAssigner = reader.GetString(5)
+                                    DescriereTask = reader.GetString(4)
                                 };
                             }
                         }
@@ -154,7 +146,6 @@ namespace DataBaseDLL
                         command.Parameters.AddWithValue("@OreLogate", task.OreLogate);
                         command.Parameters.AddWithValue("@DescriereTask", task.DescriereTask);
                         command.Parameters.AddWithValue("@NumeAssigner", task.NumeAssigner);
-                        command.Parameters.AddWithValue("@TaskId", task.TaskId);
                         command.ExecuteNonQuery();
                     }
                 }

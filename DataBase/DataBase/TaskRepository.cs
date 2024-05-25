@@ -4,10 +4,18 @@ using System.Data.SQLite;
 
 namespace DataBase
 {
+    /// <summary>
+    /// Clasă care se ocupă de operațiile legate de task-uri în baza de date.
+    /// </summary>
+
     public class TaskRepository
     {
         private string connectionString = "Data Source=database.sqlite;Version=3;";
 
+        /// <summary>
+        /// Creează un nou task în baza de date.
+        /// </summary>
+        /// <param name="task">Task-ul de creat.</param>
         public void CreateTask(Task task)
         {
             try
@@ -38,6 +46,10 @@ namespace DataBase
             }
         }
 
+        /// <summary>
+        /// Obține o listă cu toate task-urile din baza de date.
+        /// </summary>
+        /// <returns>O listă de task-uri.</returns>
         public List<Task> GetAllTasks()
         {
             var tasks = new List<Task>();
@@ -74,6 +86,11 @@ namespace DataBase
             return tasks;
         }
 
+        /// <summary>
+        /// Obține un task din baza de date în funcție de ID-ul său.
+        /// </summary>
+        /// <param name="taskId">ID-ul task-ului.</param>
+        /// <returns>Task-ul găsit sau null dacă nu există.</returns>
         public Task GetTaskById(int taskId)
         {
             Task task = null;
@@ -111,6 +128,10 @@ namespace DataBase
             return task;
         }
 
+        /// <summary>
+        /// Actualizează informațiile unui task în baza de date.
+        /// </summary>
+        /// <param name="task">Task-ul cu noile informații.</param>
         public void UpdateTask(Task task)
         {
             try
@@ -145,6 +166,10 @@ namespace DataBase
             }
         }
 
+        /// <summary>
+        /// Șterge un task din baza de date împreună cu toate atribuirile acestuia către utilizatori.
+        /// </summary>
+        /// <param name="taskId">ID-ul task-ului de șters.</param>
         public void DeleteTask(int taskId)
         {
             try

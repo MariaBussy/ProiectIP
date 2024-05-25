@@ -4,6 +4,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskLibrary;
 
 namespace DataBaseDLL
 {
@@ -119,9 +120,9 @@ namespace DataBaseDLL
         /// </summary>
         /// <param name="userId">ID-ul utilizatorului.</param>
         /// <returns>O listă de task-uri atribuite utilizatorului.</returns>
-        public List<Task> GetUserTasks(int userId)
+        public List<TaskLibrary.Task> GetUserTasks(int userId)
         {
-            var tasks = new List<Task>();
+            var tasks = new List<TaskLibrary.Task>();
             try
             {
                 using (var connection = new SQLiteConnection(connectionString))
@@ -139,13 +140,12 @@ namespace DataBaseDLL
                         {
                             while (reader.Read())
                             {
-                                tasks.Add(new Task
+                                var task = new TaskLibrary.Task(reader.GetString(1), reader.GetString(5))
                                 {
-                                    TaskId = reader.GetInt32(0),
-                                    NumeTask = reader.GetString(1),
-                                    DescriereTask = reader.GetString(2),
-                                    NumeAssigner = reader.GetString(3)
-                                });
+                                    OreLogate = reader.GetDouble(3),
+                                    DescriereTask = reader.GetString(4)
+                                };
+                                tasks.Add(task);
                             }
                         }
                     }
