@@ -70,7 +70,7 @@ namespace TaskLibrary
         }
 
         /// <summary>
-        /// Sets the assignment date of the task.
+        /// Gets and sets the assignment date of the task as a DateTime value.
         /// </summary>
         public DateTime DataAsignariiAsDateTime
         {

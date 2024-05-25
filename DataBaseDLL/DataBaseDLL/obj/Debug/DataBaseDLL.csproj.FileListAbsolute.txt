@@ -14,3 +14,21 @@ C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBaseDLL\Dat
 C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBaseDLL\DataBaseDLL\obj\Debug\DataBase.7708B9A9.Up2Date
 C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBaseDLL\DataBaseDLL\obj\Debug\DataBaseDLL.dll
 C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBaseDLL\DataBaseDLL\obj\Debug\DataBaseDLL.pdb
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\bin\Debug\DataBaseDLL.dll.config
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\bin\Debug\DataBaseDLL.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\bin\Debug\DataBaseDLL.pdb
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\bin\Debug\EntityFramework.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\bin\Debug\EntityFramework.SqlServer.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\bin\Debug\System.Data.SQLite.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\bin\Debug\System.Data.SQLite.EF6.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\bin\Debug\System.Data.SQLite.Linq.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\bin\Debug\TaskLibrary.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\bin\Debug\EntityFramework.xml
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\bin\Debug\EntityFramework.SqlServer.xml
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\bin\Debug\System.Data.SQLite.xml
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\bin\Debug\TaskLibrary.pdb
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\obj\Debug\DataBaseDLL.csproj.AssemblyReference.cache
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\obj\Debug\DataBaseDLL.csproj.CoreCompileInputs.cache
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\obj\Debug\DataBaseDLL.csproj.CopyComplete
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\obj\Debug\DataBaseDLL.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBaseDLL\DataBaseDLL\obj\Debug\DataBaseDLL.pdb
