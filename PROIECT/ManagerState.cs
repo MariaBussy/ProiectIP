@@ -1,39 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TaskLibrary;
 
 namespace PROIECT
 {
-    // Implementare pentru Manager
     public class ManagerState : IUserState
     {
-        public void AddTask(Client user, Task task)
+        public void AddTask(Client client, Task task)
         {
-            user.Tasks.Add(task);
+            client.Tasks.Add(task);
         }
 
-        public void ModifyTask(Client user, string taskName, Task updatedTask)
+        public void ModifyTask(Client client, string taskName, Task updatedTask)
         {
-            var task = user.Tasks.Find(t => t.Name == taskName);
+            var task = client.Tasks.FirstOrDefault(t => t.NumeTask == taskName);
             if (task != null)
             {
-                task.Name = updatedTask.Name;
-                task.Description = updatedTask.Description;
-                task.Deadline = updatedTask.Deadline;
+                task.NumeTask = updatedTask.NumeTask;
+                task.DescriereTask = updatedTask.DescriereTask;
+                task.OreLogate = updatedTask.OreLogate;
             }
         }
 
-        public void RemoveTask(Client user, string taskName)
+        public void RemoveTask(Client client, string taskName)
         {
-            user.Tasks.RemoveAll(t => t.Name == taskName);
+            var task = client.Tasks.FirstOrDefault(t => t.NumeTask == taskName);
+            if (task != null)
+            {
+                client.Tasks.Remove(task);
+            }
         }
 
-        public List<Task> ViewTasks(Client user)
+        public List<Task> ViewTasks(Client client)
         {
-            return user.Tasks;
+            return client.Tasks;
         }
     }
-
 }

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TaskLibrary;
 
 namespace PROIECT
 {
@@ -32,9 +30,13 @@ namespace PROIECT
             return State.ViewTasks(this);
         }
 
-        public void EditTask(string taskName, string newName, string newDescription, DateTime newDeadline)
+        public void EditTask(string taskName, string newName, string newDescription, double newLoggedHours)
         {
-            var updatedTask = new Task { Name = newName, Description = newDescription, Deadline = newDeadline };
+            var updatedTask = new Task(newName, this.Name)
+            {
+                DescriereTask = newDescription,
+                OreLogate = newLoggedHours
+            };
             State.ModifyTask(this, taskName, updatedTask);
         }
     }

@@ -1,33 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using TaskLibrary;
 
 namespace PROIECT
 {
-    // Implementare pentru Developer
     public class DeveloperState : IUserState
     {
-        public void AddTask(Client user, Task task)
+        public void AddTask(Client client, Task task)
         {
             // Developers cannot add tasks
         }
 
-        public void ModifyTask(Client user, string taskName, Task updatedTask)
+        public void ModifyTask(Client client, string taskName, Task updatedTask)
         {
             // Developers cannot modify tasks
         }
 
-        public void RemoveTask(Client user, string taskName)
+        public void RemoveTask(Client client, string taskName)
         {
             // Developers cannot remove tasks
         }
 
-        public List<Task> ViewTasks(Client user)
+        public List<Task> ViewTasks(Client client)
         {
-            return user.Tasks;
+            return client.Tasks;
         }
     }
-
 }

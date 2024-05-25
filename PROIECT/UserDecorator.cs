@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using TaskLibrary;
 
 namespace PROIECT
 {
-    // Clasa abstractă pentru decorator
     public abstract class UserDecorator : IUser
     {
         protected IUser _user;
@@ -16,9 +12,23 @@ namespace PROIECT
             _user = user;
         }
 
-        public virtual string Name { get => _user.Name; set => _user.Name = value; }
-        public virtual List<Task> Tasks { get => _user.Tasks; set => _user.Tasks = value; }
-        public virtual IUserState State { get => _user.State; set => _user.State = value; }
+        public string Name
+        {
+            get { return _user.Name; }
+            set { _user.Name = value; }
+        }
+
+        public List<Task> Tasks
+        {
+            get { return _user.Tasks; }
+            set { _user.Tasks = value; }
+        }
+
+        public IUserState State
+        {
+            get { return _user.State; }
+            set { _user.State = value; }
+        }
 
         public virtual void AddTask(Task task)
         {
@@ -40,10 +50,9 @@ namespace PROIECT
             return _user.ViewTasks();
         }
 
-        public virtual void EditTask(string taskName, string newName, string newDescription, DateTime newDeadline)
+        public virtual void EditTask(string taskName, string newName, string newDescription, double newLoggedHours)
         {
-            _user.EditTask(taskName, newName, newDescription, newDeadline);
+            _user.EditTask(taskName, newName, newDescription, newLoggedHours);
         }
     }
-
 }

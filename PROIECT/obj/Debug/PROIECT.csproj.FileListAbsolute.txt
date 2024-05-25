@@ -5,3 +5,6 @@ C:\Users\Aso\source\repos\PROIECT\PROIECT\bin\Debug\PROIECT.exe
 C:\Users\Aso\source\repos\PROIECT\PROIECT\bin\Debug\PROIECT.pdb
 C:\Users\Aso\source\repos\PROIECT\PROIECT\obj\Debug\PROIECT.exe
 C:\Users\Aso\source\repos\PROIECT\PROIECT\obj\Debug\PROIECT.pdb
+C:\Users\Aso\source\repos\PROIECT\PROIECT\bin\Debug\TaskLibrary.dll
+C:\Users\Aso\source\repos\PROIECT\PROIECT\bin\Debug\TaskLibrary.pdb
+C:\Users\Aso\source\repos\PROIECT\PROIECT\obj\Debug\PROIECT.csproj.CopyComplete

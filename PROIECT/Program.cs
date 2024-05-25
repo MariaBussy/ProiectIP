@@ -1,58 +1,81 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TaskLibrary;
 
 namespace PROIECT
 {
-    public class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            // Crearea utilizatorilor cu stări specifice
-            IUser pers1 = new Client { Name = "Alice", State = new ManagerState() };
-            IUser pers2 = new Client { Name = "Bob", State = new TeamLeadState() };
-            IUser pers3 = new Client { Name = "Charlie", State = new DeveloperState() };
-
-            // Adăugăm un decorator pentru logging și pentru funcționalități de vizualizare/editare
-            pers1 = new LoggingUserDecorator(pers1);
-            pers2 = new LoggingUserDecorator(pers2);
-
-            // Adăugare task-uri
-            Task task1 = new Task { Name = "Task1", Description = "Description1", Deadline = DateTime.Now.AddDays(1) };
-            pers1.AddTask(task1);
-
-            Task task2 = new Task { Name = "Task2", Description = "Description2", Deadline = DateTime.Now.AddDays(2) };
-            pers2.AddTask(task2);
-
-            // Vizualizare task-uri
-            Console.WriteLine("Tasks for Alice:");
-            foreach (var task in pers1.ViewTasks())
+            // Create clients with different roles
+            Client manager = new Client
             {
-                Console.WriteLine($" - {task.Name}, {task.Description}, {task.Deadline}");
+                Name = "Manager1",
+                State = new ManagerState()
+            };
+
+            Client teamLead = new Client
+            {
+                Name = "TeamLead1",
+                State = new TeamLeadState()
+            };
+
+            Client developer = new Client
+            {
+                Name = "Developer1",
+                State = new DeveloperState()
+            };
+
+            // Decorate the clients with logging functionality
+            IUser loggingManager = new LoggingUserDecorator(manager);
+            IUser loggingTeamLead = new LoggingUserDecorator(teamLead);
+            IUser loggingDeveloper = new LoggingUserDecorator(developer);
+
+            // Create some tasks
+            Task task1 = new Task("Task1", "Manager1");
+            Task task2 = new Task("Task2", "TeamLead1");
+            Task task3 = new Task("Task3", "Manager1");
+
+            // Manager adding tasks
+            loggingManager.AddTask(task1);
+            loggingManager.AddTask(task2);
+
+            // TeamLead adding a task
+            loggingTeamLead.AddTask(task3);
+
+            // Viewing tasks
+            Console.WriteLine("Manager's Tasks:");
+            foreach (var task in loggingManager.ViewTasks())
+            {
+                Console.WriteLine($"- {task.NumeTask}");
             }
 
-            // Editare task-uri
-            pers1.EditTask("Task1", "Task1 Edited", "Description1 Edited", DateTime.Now.AddDays(3));
-
-            // Ștergere task-uri
-            pers1.RemoveTask("Task1 Edited");
-
-            // Afișare utilizatori și task-uri
-            DisplayUserTasks(pers1);
-            DisplayUserTasks(pers2);
-            DisplayUserTasks(pers3);
-        }
-
-        private static void DisplayUserTasks(IUser user)
-        {
-            Console.WriteLine($"User: {user.Name}, Role: {user.State.GetType().Name.Replace("State", "")}");
-            foreach (var task in user.ViewTasks())
+            Console.WriteLine("TeamLead's Tasks:");
+            foreach (var task in loggingTeamLead.ViewTasks())
             {
-                Console.WriteLine($" - Task: {task.Name}, Description: {task.Description}, Deadline: {task.Deadline}");
+                Console.WriteLine($"- {task.NumeTask}");
+            }
+
+            // Editing a task
+            loggingManager.EditTask("Task1", "UpdatedTask1", "Updated description", 5.0);
+
+            // Viewing tasks after modification
+            Console.WriteLine("Manager's Tasks after modification:");
+            foreach (var task in loggingManager.ViewTasks())
+            {
+                Console.WriteLine($"- {task.NumeTask}: {task.DescriereTask}");
+            }
+
+            // Removing a task
+            loggingManager.RemoveTask("Task2");
+
+            // Viewing tasks after removal
+            Console.WriteLine("Manager's Tasks after removal:");
+            foreach (var task in loggingManager.ViewTasks())
+            {
+                Console.WriteLine($"- {task.NumeTask}");
             }
         }
     }
 }
-

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TaskLibrary;
 
 namespace PROIECT
 {
-    // Interfața IUser care definește funcționalitățile de bază ale unui utilizator
     public interface IUser
     {
         string Name { get; set; }
@@ -17,7 +14,6 @@ namespace PROIECT
         void ModifyTask(string taskName, Task updatedTask);
         void RemoveTask(string taskName);
         List<Task> ViewTasks();
-        void EditTask(string taskName, string newName, string newDescription, DateTime newDeadline);
+        void EditTask(string taskName, string newName, string newDescription, double newLoggedHours);
     }
-
 }
