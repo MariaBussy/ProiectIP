@@ -8,11 +8,11 @@ namespace TaskLibrary
 {
     public class Task
     {
-        private String numeTask;
-        private DateTime dataAsignarii;
-        private double oreLogate;
-        private String descriereTask;
-        private String numeAssigner;
+        private String _numeTask;
+        private DateTime _dataAsignarii;
+        private double _oreLogate;
+        private String _descriereTask;
+        private String _numeAssigner;
 
         public Task(in String nume, in String numePersoana)
         {
@@ -22,7 +22,7 @@ namespace TaskLibrary
             }
             else
             {
-                numeTask = nume;
+                _numeTask = nume;
             }
 
             if (numePersoana == null || numePersoana == "" || numePersoana.Length < 5)
@@ -31,18 +31,18 @@ namespace TaskLibrary
             }
             else
             {
-                numeAssigner = numePersoana;
+                _numeAssigner = numePersoana;
             }
 
-            dataAsignarii = DateTime.Now;
+            _dataAsignarii = DateTime.Now;
 
-            descriereTask = "";
-            oreLogate = 0.0;
+            _descriereTask = "";
+            _oreLogate = 0.0;
         }
 
         public string NumeTask
         {
-            get { return numeTask; }
+            get { return _numeTask; }
             set {
                 if (value == null || value == "" || value.Length<5)
                 {
@@ -50,19 +50,19 @@ namespace TaskLibrary
                 }
                 else
                 {
-                    numeTask = value;
+                    _numeTask = value;
                 }
             }
         }
 
         public String DataAsignarii
         {
-            get { return dataAsignarii.ToString("dd-MM-yyyy"); }
+            get { return _dataAsignarii.ToString("dd-MM-yyyy"); }
         }
 
         public double OreLogate
         {
-            get { return oreLogate; }
+            get { return _oreLogate; }
             set
             {
                 if (value <= 0.0)
@@ -71,20 +71,20 @@ namespace TaskLibrary
                 }
                 else
                 {
-                    oreLogate = value;
+                    _oreLogate = value;
                 }
             }
         }
 
         public String DescriereTask
         {
-            get { return descriereTask; }
-            set { descriereTask = value; }
+            get { return _descriereTask; }
+            set { _descriereTask = value; }
         }
 
         public String NumeAssigner
         {
-            get { return numeAssigner; }
+            get { return _numeAssigner; }
             set {
                 if (value == null || value == "" || value.Length < 5)
                 {
@@ -92,7 +92,7 @@ namespace TaskLibrary
                 }
                 else
                 {
-                    numeAssigner = value;
+                    _numeAssigner = value;
                 }
             }
         }
