@@ -122,10 +122,11 @@ namespace DataBase
                         {
                             if (reader.Read())
                             {
-                                task = new TaskLibrary.Task(nume: reader.GetString(1), numePersoana: reader.GetString(5));
+                                task.NumeTask= reader.GetString(1);
                                 task.DataAsignariiAsDateTime = reader.GetDateTime(2);
                                 task.OreLogate = reader.GetDouble(3);
                                 task.DescriereTask = reader.GetString(4);
+                                task.NumeAssigner = reader.GetString(5);
                             }
                         }
                     }
