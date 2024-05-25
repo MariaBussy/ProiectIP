@@ -59,7 +59,6 @@ namespace DataBase
                                 task.DataAsignariiAsDateTime = reader.GetDateTime(2);
                                 task.OreLogate = reader.GetDouble(3);
                                 task.DescriereTask = reader.GetString(4);
-                                task.NumeAssigner = reader.GetString(5);
 
                                 tasks.Add(task);
                             }

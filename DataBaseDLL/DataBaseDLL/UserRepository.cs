@@ -92,9 +92,9 @@ namespace DataBaseDLL
         /// </summary>
         /// <param name="userId">ID-ul utilizatorului.</param>
         /// <returns>O listă de task-uri.</returns>
-        private List<Task> GetUserTasks(int userId)
+        private List<TaskLibrary.Task> GetUserTasks(int userId)
         {
-            var tasks = new List<Task>();
+            var tasks = new List<TaskLibrary.Task>();
             try
             {
                 using (var connection = new SQLiteConnection(connectionString))
@@ -112,16 +112,13 @@ namespace DataBaseDLL
                         {
                             while (reader.Read())
                             {
-                                // Assuming Task object has a constructor that takes relevant parameters
-                                tasks.Add(new Task
-                                {
-                                    TaskId = reader.GetInt32(0),
-                                    NumeTask = reader.GetString(1),
-                                    DataAsignarii = reader.GetDateTime(2),
-                                    OreLogate = reader.GetDouble(3),
-                                    DescriereTask = reader.GetString(4),
-                                    NumeAssigner = reader.GetString(5)
-                                });
+                                TaskLibrary.Task task = new TaskLibrary.Task(nume: reader.GetString(1), numePersoana: reader.GetString(5));
+
+                                task.DataAsignariiAsDateTime = reader.GetDateTime(2);
+                                task.OreLogate = reader.GetDouble(3);
+                                task.DescriereTask = reader.GetString(4);
+
+                                tasks.Add(task);
                             }
                         }
                     }
