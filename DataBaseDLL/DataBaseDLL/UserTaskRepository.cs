@@ -104,7 +104,7 @@ namespace DataBase
                 {
                     connection.Open();
                     string query = @"
-                SELECT Tasks.TaskId, Tasks.NumeTask, Tasks.OreLogate, Tasks.DescriereTask, Tasks.NumeAssigner
+                SELECT Tasks.TaskId, Tasks.NumeTask, Tasks.dataAsignarii, Tasks.OreLogate, Tasks.DescriereTask, Tasks.NumeAssigner
                 FROM Tasks
                 INNER JOIN UserTasks ON Tasks.TaskId = UserTasks.TaskId
                 WHERE UserTasks.UserId = @UserId";
