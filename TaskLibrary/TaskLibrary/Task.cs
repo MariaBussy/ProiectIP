@@ -87,7 +87,7 @@ namespace TaskLibrary
             get { return _oreLogate; }
             set
             {
-                if (value <= 0.0)
+                if (value < 0.0)
                 {
                     throw new Exception("Invalid value for logged hours.-> value>0");
                 }
