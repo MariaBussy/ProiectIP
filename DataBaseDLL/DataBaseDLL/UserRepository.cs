@@ -66,7 +66,9 @@ namespace DataBaseDLL
                                     UserId = reader.GetInt32(0),
                                     Name = reader.GetString(1),
                                     UserStat = (UserStats)Enum.Parse(typeof(UserStats), reader.GetString(2)),
-                                    TeamLeadId = reader.IsDBNull(3) ? (int?)null : reader.GetInt32(3)
+                                    TeamLeadId = reader.IsDBNull(3) ? (int?)null : reader.GetInt32(3),
+                                    Username = reader.GetString(4), 
+                                    Password = reader.GetString(5) 
                                 };
 
                                 // Fetch tasks associated with this user
