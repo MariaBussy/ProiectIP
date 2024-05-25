@@ -4,14 +4,16 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskLibrary;
 
 namespace DataBase
 {
     public class UserTaskRepository
     {
         private string connectionString = "Data Source=database.sqlite;Version=3;";
+        private TaskRepository taskRepository = new TaskRepository();
 
-        public void AddUserTask(int taskId, int userId)
+        public void AddUserTask(string numeTask, int userId)
         {
             try
             {
@@ -24,7 +26,7 @@ namespace DataBase
                     using (var command = new SQLiteCommand(insertQuery, connection))
                     {
                         command.Parameters.AddWithValue("@UserId", userId);
-                        command.Parameters.AddWithValue("@TaskId", taskId);
+                        command.Parameters.AddWithValue("@TaskId", taskRepository.GetTaskId(numeTask));
 
                         command.ExecuteNonQuery();
                     }
@@ -38,7 +40,7 @@ namespace DataBase
             }
         }
 
-        public void DeleteUserTask(int taskId, int userId)
+        public void DeleteUserTask(string numeTask, int userId)
         {
             try
             {
@@ -51,7 +53,7 @@ namespace DataBase
                     using (var command = new SQLiteCommand(deleteQuery, connection))
                     {
                         command.Parameters.AddWithValue("@UserId", userId);
-                        command.Parameters.AddWithValue("@TaskId", taskId);
+                        command.Parameters.AddWithValue("@TaskId", taskRepository.GetTaskId(numeTask));
 
                         command.ExecuteNonQuery();
                     }
@@ -65,7 +67,7 @@ namespace DataBase
             }
         }
 
-        public void UpdateUserTask(int oldTaskId, int oldUserId, int newTaskId, int newUserId)
+        public void UpdateUserTask(string oldTaskName, int oldUserId, string newTaskName, int newUserId)
         {
             try
             {
@@ -77,9 +79,9 @@ namespace DataBase
 
                     using (var command = new SQLiteCommand(updateQuery, connection))
                     {
-                        command.Parameters.AddWithValue("@NewTaskId", newTaskId);
+                        command.Parameters.AddWithValue("@NewTaskId", taskRepository.GetTaskId(newTaskName));
                         command.Parameters.AddWithValue("@NewUserId", newUserId);
-                        command.Parameters.AddWithValue("@OldTaskId", oldTaskId);
+                        command.Parameters.AddWithValue("@OldTaskId", taskRepository.GetTaskId(oldTaskName));
                         command.Parameters.AddWithValue("@OldUserId", oldUserId);
 
                         command.ExecuteNonQuery();
@@ -93,16 +95,16 @@ namespace DataBase
                 Console.WriteLine($"An error occurred while updating the Task assignment: {ex.Message}");
             }
         }
-        public List<Task> GetUserTasks(int userId)
+        public List<TaskLibrary.Task> GetUserTasks(int userId)
         {
-            var tasks = new List<Task>();
+            var tasks = new List<TaskLibrary.Task>();
             try
             {
                 using (var connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
                     string query = @"
-                SELECT Tasks.TaskId, Tasks.NumeTask, Tasks.DescriereTask, Tasks.NumeAssigner
+                SELECT Tasks.TaskId, Tasks.NumeTask, Tasks.OreLogate, Tasks.DescriereTask, Tasks.NumeAssigner
                 FROM Tasks
                 INNER JOIN UserTasks ON Tasks.TaskId = UserTasks.TaskId
                 WHERE UserTasks.UserId = @UserId";
@@ -113,13 +115,12 @@ namespace DataBase
                         {
                             while (reader.Read())
                             {
-                                tasks.Add(new Task
-                                {
-                                    TaskId = reader.GetInt32(0),
-                                    NumeTask = reader.GetString(1),
-                                    DescriereTask = reader.GetString(2),
-                                    NumeAssigner = reader.GetString(3)
-                                });
+                                TaskLibrary.Task task = new TaskLibrary.Task(nume: reader.GetString(1), numePersoana: reader.GetString(5));
+                                task.DataAsignariiAsDateTime = reader.GetDateTime(2);
+                                task.OreLogate = reader.GetDouble(3);
+                                task.DescriereTask = reader.GetString(4);
+
+                                tasks.Add(task);
                             }
                         }
                     }
@@ -131,7 +132,7 @@ namespace DataBase
             }
             return tasks;
         }
-        public List<User> GetUsersByTaskId(int taskId)
+        /*public List<User> GetUsersByTaskId(int taskId)
         {
             var users = new List<User>();
             try
@@ -168,7 +169,7 @@ namespace DataBase
                 Console.WriteLine($"An error occurred while retrieving users by task ID: {ex.Message}");
             }
             return users;
-        }
+        }*/
 
     }
 }

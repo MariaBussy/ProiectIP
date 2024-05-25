@@ -25,3 +25,32 @@ C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\UnitTe
 C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\System.Data.SQLite.Linq.dll
 C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\EntityFramework.xml
 C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\EntityFramework.SqlServer.xml
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\Microsoft.TestPlatform.AdapterUtilities.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\UnitTestDataBase.dll.config
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\UnitTestDataBase.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\UnitTestDataBase.pdb
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\DataBase.exe
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\EntityFramework.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\EntityFramework.SqlServer.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\System.Data.SQLite.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\System.Data.SQLite.EF6.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\System.Data.SQLite.Linq.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\DataBase.pdb
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\DataBase.exe.config
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\EntityFramework.xml
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\EntityFramework.SqlServer.xml
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\System.Data.SQLite.xml
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\obj\Debug\UnitTestDataBase.csproj.AssemblyReference.cache
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\obj\Debug\UnitTestDataBase.csproj.CoreCompileInputs.cache
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\obj\Debug\UnitTestDataBase.csproj.CopyComplete
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\obj\Debug\UnitTestDataBase.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\obj\Debug\UnitTestDataBase.pdb
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\TaskLibrary.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\UnitTestDataBase\bin\Debug\TaskLibrary.pdb

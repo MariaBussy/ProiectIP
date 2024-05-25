@@ -64,9 +64,18 @@ namespace TaskLibrary
         /// <summary>
         /// Gets the assignment date of the task in "dd-MM-yyyy" format.
         /// </summary>
-        public String DataAsignarii
+        public String GetDataAsignarii
         {
             get { return _dataAsignarii.ToString("dd-MM-yyyy"); }
+        }
+
+        /// <summary>
+        /// Sets the assignment date of the task.
+        /// </summary>
+        public DateTime DataAsignariiAsDateTime
+        {
+            get { return _dataAsignarii; }
+            set { _dataAsignarii = value; }
         }
 
         /// <summary>

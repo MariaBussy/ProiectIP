@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using TaskLibrary;
 
 namespace DataBase
 {
@@ -8,7 +9,7 @@ namespace DataBase
     {
         private string connectionString = "Data Source=database.sqlite;Version=3;";
 
-        public void CreateTask(Task task)
+        public void CreateTask(TaskLibrary.Task task)
         {
             try
             {
@@ -26,7 +27,7 @@ namespace DataBase
                         command.Parameters.AddWithValue("@OreLogate", 0);
                         command.Parameters.AddWithValue("@DescriereTask", task.DescriereTask);
                         command.Parameters.AddWithValue("@NumeAssigner", task.NumeAssigner);
-                        task.TaskId = Convert.ToInt32(command.ExecuteScalar());
+                        //task.TaskId = Convert.ToInt32(command.ExecuteScalar());
                     }
 
                 }
@@ -38,9 +39,9 @@ namespace DataBase
             }
         }
 
-        public List<Task> GetAllTasks()
+        public List<TaskLibrary.Task> GetAllTasks()
         {
-            var tasks = new List<Task>();
+            var tasks = new List<TaskLibrary.Task>();
             try
             {
                 using (var connection = new SQLiteConnection(connectionString))
@@ -53,15 +54,14 @@ namespace DataBase
                         {
                             while (reader.Read())
                             {
-                                tasks.Add(new Task
-                                {
-                                    TaskId = reader.GetInt32(0),
-                                    NumeTask = reader.GetString(1),
-                                    DataAsignarii = reader.GetDateTime(2),
-                                    OreLogate = reader.GetDouble(3),
-                                    DescriereTask = reader.GetString(4),
-                                    NumeAssigner = reader.GetString(5)
-                                });
+                                TaskLibrary.Task task=new TaskLibrary.Task(nume: reader.GetString(1), numePersoana: reader.GetString(5));
+
+                                task.DataAsignariiAsDateTime = reader.GetDateTime(2);
+                                task.OreLogate = reader.GetDouble(3);
+                                task.DescriereTask = reader.GetString(4);
+                                task.NumeAssigner = reader.GetString(5);
+
+                                tasks.Add(task);
                             }
                         }
                     }
@@ -73,10 +73,41 @@ namespace DataBase
             }
             return tasks;
         }
-
-        public Task GetTaskById(int taskId)
+        
+        public int GetTaskId(string numeTask)
         {
-            Task task = null;
+            int id = 0;
+            try
+            {
+                using (var connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Tasks WHERE NumeTask = @NumeTask";
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@NumeTask", numeTask);
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                id = reader.GetInt32(0);
+                            }
+                        }
+                    }
+                }
+                return id;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while retrieving the task ID: {ex.Message}");
+                return id;
+            }
+        }
+
+        public TaskLibrary.Task GetTaskByName(string numeTask)
+        {
+            int taskId = GetTaskId(numeTask);
+            TaskLibrary.Task task = new TaskLibrary.Task("newTask", "newAssigner");
             try
             {
                 using (var connection = new SQLiteConnection(connectionString))
@@ -90,15 +121,10 @@ namespace DataBase
                         {
                             if (reader.Read())
                             {
-                                task = new Task
-                                {
-                                    TaskId = reader.GetInt32(0),
-                                    NumeTask = reader.GetString(1),
-                                    DataAsignarii = reader.GetDateTime(2),
-                                    OreLogate = reader.GetDouble(3),
-                                    DescriereTask = reader.GetString(4),
-                                    NumeAssigner = reader.GetString(5)
-                                };
+                                task = new TaskLibrary.Task(nume: reader.GetString(1), numePersoana: reader.GetString(5));
+                                task.DataAsignariiAsDateTime = reader.GetDateTime(2);
+                                task.OreLogate = reader.GetDouble(3);
+                                task.DescriereTask = reader.GetString(4);
                             }
                         }
                     }
@@ -111,7 +137,7 @@ namespace DataBase
             return task;
         }
 
-        public void UpdateTask(Task task)
+        public void UpdateTask(TaskLibrary.Task task)
         {
             try
             {
@@ -129,11 +155,11 @@ namespace DataBase
                     using (var command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@NumeTask", task.NumeTask);
-                        command.Parameters.AddWithValue("@DataAsignarii", task.DataAsignarii);
+                        command.Parameters.AddWithValue("@DataAsignarii", task.DataAsignariiAsDateTime);
                         command.Parameters.AddWithValue("@OreLogate", task.OreLogate);
                         command.Parameters.AddWithValue("@DescriereTask", task.DescriereTask);
                         command.Parameters.AddWithValue("@NumeAssigner", task.NumeAssigner);
-                        command.Parameters.AddWithValue("@TaskId", task.TaskId);
+                        command.Parameters.AddWithValue("@TaskId", GetTaskId(task.NumeTask));
                         command.ExecuteNonQuery();
                     }
                 }
@@ -145,7 +171,7 @@ namespace DataBase
             }
         }
 
-        public void DeleteTask(int taskId)
+        public void DeleteTask(string numeTask)
         {
             try
             {
@@ -157,7 +183,7 @@ namespace DataBase
                     string deleteUserTasksQuery = "DELETE FROM UserTasks WHERE TaskId = @TaskId";
                     using (var deleteUserTasksCommand = new SQLiteCommand(deleteUserTasksQuery, connection))
                     {
-                        deleteUserTasksCommand.Parameters.AddWithValue("@TaskId", taskId);
+                        deleteUserTasksCommand.Parameters.AddWithValue("@TaskId", GetTaskId(numeTask));
                         deleteUserTasksCommand.ExecuteNonQuery();
                     }
 
@@ -165,7 +191,7 @@ namespace DataBase
                     string deleteTaskQuery = "DELETE FROM Tasks WHERE TaskId = @TaskId";
                     using (var deleteTaskCommand = new SQLiteCommand(deleteTaskQuery, connection))
                     {
-                        deleteTaskCommand.Parameters.AddWithValue("@TaskId", taskId);
+                        deleteTaskCommand.Parameters.AddWithValue("@TaskId", GetTaskId(numeTask));
                         deleteTaskCommand.ExecuteNonQuery();
                     }
                 }

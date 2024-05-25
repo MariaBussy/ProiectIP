@@ -22,7 +22,7 @@ namespace TaskUnitTests
             // Assert
             Assert.AreEqual(expectedName, task.NumeTask);
             Assert.AreEqual(expectedAssigner, task.NumeAssigner);
-            Assert.AreEqual(DateTime.Now.ToString("dd-MM-yyyy"), task.DataAsignarii); // Formatted date
+            Assert.AreEqual(DateTime.Now.ToString("dd-MM-yyyy"), task.GetDataAsignarii); // Formatted date
             Assert.AreEqual(0.0, task.OreLogate);
             Assert.AreEqual("", task.DescriereTask);
         }
@@ -138,9 +138,20 @@ namespace TaskUnitTests
             Task task = new Task("Finish report", "John Doe");
 
             // Act
-            string formattedDate = task.DataAsignarii;
+            string formattedDate = task.GetDataAsignarii;
 
             Assert.AreEqual(DateTime.Now.ToString("dd-MM-yyyy"), formattedDate);
+        }
+
+        [TestMethod]
+        public void SetTaskDate()
+        {
+            // Arrange
+            Task task = new Task("Valid name", "Valid Assigner");
+
+            task.DataAsignariiAsDateTime = DateTime.Today;
+
+            Assert.AreEqual(DateTime.Now.ToString("dd-MM-yyyy"), task.GetDataAsignarii);
         }
     }
 }
