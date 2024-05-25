@@ -1,0 +1,16 @@
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\bin\Debug\TaskUnitTests.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\bin\Debug\TaskUnitTests.pdb
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\bin\Debug\TaskLibrary.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\bin\Debug\TaskLibrary.pdb
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\obj\Debug\TaskUnitTests.csproj.AssemblyReference.cache
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\obj\Debug\TaskUnitTests.csproj.CoreCompileInputs.cache
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\obj\Debug\TaskUnitTests.csproj.CopyComplete
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\obj\Debug\TaskUnitTests.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\obj\Debug\TaskUnitTests.pdb
