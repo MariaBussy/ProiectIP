@@ -23,11 +23,13 @@ namespace DataBase
                     using (var command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@NumeTask", task.NumeTask);
-                        command.Parameters.AddWithValue("@DataAsignarii", DateTime.Now);
+                        command.Parameters.AddWithValue("@DataAsignarii", task.DataAsignariiAsDateTime);
                         command.Parameters.AddWithValue("@OreLogate", 0);
                         command.Parameters.AddWithValue("@DescriereTask", task.DescriereTask);
                         command.Parameters.AddWithValue("@NumeAssigner", task.NumeAssigner);
                         //task.TaskId = Convert.ToInt32(command.ExecuteScalar());
+
+                        command.ExecuteNonQuery();
                     }
 
                 }
