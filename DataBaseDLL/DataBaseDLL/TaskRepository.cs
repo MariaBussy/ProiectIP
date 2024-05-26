@@ -114,15 +114,15 @@ namespace DataBase
                 using (var connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Tasks WHERE TaskId = @TaskId";
+                    string query = "SELECT * FROM Tasks WHERE NumeTask=@NumeTask";
                     using (var command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@TaskId", taskId);
+                        command.Parameters.AddWithValue("@NumeTask", numeTask);
                         using (var reader = command.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                task.NumeTask= reader.GetString(1);
+                                task.NumeTask = reader.GetString(1);
                                 task.DataAsignariiAsDateTime = reader.GetDateTime(2);
                                 task.OreLogate = reader.GetDouble(3);
                                 task.DescriereTask = reader.GetString(4);
@@ -148,15 +148,14 @@ namespace DataBase
                     connection.Open();
                     string query = @"
                         UPDATE Tasks 
-                        SET NumeTask = @NumeTask, 
-                            DataAsignarii = @DataAsignarii, 
+                        SET DataAsignarii = @DataAsignarii, 
                             OreLogate = @OreLogate, 
                             DescriereTask = @DescriereTask, 
                             NumeAssigner = @NumeAssigner 
                         WHERE TaskId = @TaskId";
                     using (var command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@NumeTask", task.NumeTask);
+                        //command.Parameters.AddWithValue("@NumeTask", task.NumeTask);
                         command.Parameters.AddWithValue("@DataAsignarii", task.DataAsignariiAsDateTime);
                         command.Parameters.AddWithValue("@OreLogate", task.OreLogate);
                         command.Parameters.AddWithValue("@DescriereTask", task.DescriereTask);
