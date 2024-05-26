@@ -25,3 +25,4 @@ C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\bin\Debug\System.Dat
 C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\bin\Debug\EntityFramework.xml
 C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\bin\Debug\System.Data.SQLite.xml
+C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\bin\Debug\Interfata.xml
