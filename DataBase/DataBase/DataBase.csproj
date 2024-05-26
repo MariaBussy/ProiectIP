@@ -65,6 +65,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="TaskLibrary">
+      <HintPath>..\..\TaskLibrary\TaskLibrary\bin\Debug\TaskLibrary.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cryptography.cs" />

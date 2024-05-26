@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
-using TaskLibrary;
 
 namespace DataBaseDLL
 {
@@ -29,8 +28,8 @@ namespace DataBaseDLL
                         command.Parameters.AddWithValue("@Name", user.Name);
                         command.Parameters.AddWithValue("@UserStat", user.UserStat.ToString());
                         command.Parameters.AddWithValue("@TeamLeadId", (object)user.TeamLeadId ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@Username", user.Username);
-                        command.Parameters.AddWithValue("@Password", user.Password);
+                        command.Parameters.AddWithValue("@Username", user.Username); // Adăugarea parametrului pentru username
+                        command.Parameters.AddWithValue("@Password", user.Password); // Adăugarea parametrului pentru parolă
                         command.ExecuteNonQuery();
                     }
                 }
@@ -41,6 +40,7 @@ namespace DataBaseDLL
                 Console.WriteLine($"An error occurred while creating the user: {ex.Message}");
             }
         }
+
 
         /// <summary>
         /// Obține o listă cu toți utilizatorii din baza de date.
@@ -67,11 +67,13 @@ namespace DataBaseDLL
                                     Name = reader.GetString(1),
                                     UserStat = (UserStats)Enum.Parse(typeof(UserStats), reader.GetString(2)),
                                     TeamLeadId = reader.IsDBNull(3) ? (int?)null : reader.GetInt32(3),
-                                    Username = reader.GetString(4),
-                                    Password = reader.GetString(5)
+                                    Username = reader.GetString(4), 
+                                    Password = reader.GetString(5) 
                                 };
 
-                                user.Tasks = GetUserTasks(user.UserId); // This method should return List<TaskLibrary.Task>
+                                // Fetch tasks associated with this user
+                                user.Tasks = GetUserTasks(user.UserId);
+
                                 users.Add(user);
                             }
                         }
@@ -90,7 +92,7 @@ namespace DataBaseDLL
         /// </summary>
         /// <param name="userId">ID-ul utilizatorului.</param>
         /// <returns>O listă de task-uri.</returns>
-        private List<TaskLibrary.Task> GetUserTasks(int userId) // Ensure correct return type
+        private List<TaskLibrary.Task> GetUserTasks(int userId)
         {
             var tasks = new List<TaskLibrary.Task>();
             try
@@ -99,10 +101,10 @@ namespace DataBaseDLL
                 {
                     connection.Open();
                     string query = @"
-                    SELECT t.* 
-                    FROM Tasks t
-                    INNER JOIN UserTasks ut ON t.TaskId = ut.TaskId
-                    WHERE ut.UserId = @UserId";
+                SELECT t.* 
+                FROM Tasks t
+                INNER JOIN UserTasks ut ON t.TaskId = ut.TaskId
+                WHERE ut.UserId = @UserId";
                     using (var command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@UserId", userId);
@@ -110,11 +112,12 @@ namespace DataBaseDLL
                         {
                             while (reader.Read())
                             {
-                                var task = new TaskLibrary.Task(reader.GetString(1), reader.GetString(5))
-                                {
-                                    OreLogate = reader.GetDouble(3),
-                                    DescriereTask = reader.GetString(4)
-                                };
+                                TaskLibrary.Task task = new TaskLibrary.Task(nume: reader.GetString(1), numePersoana: reader.GetString(5));
+
+                                task.DataAsignariiAsDateTime = reader.GetDateTime(2);
+                                task.OreLogate = reader.GetDouble(3);
+                                task.DescriereTask = reader.GetString(4);
+
                                 tasks.Add(task);
                             }
                         }
@@ -127,6 +130,8 @@ namespace DataBaseDLL
             }
             return tasks;
         }
+
+
 
         /// <summary>
         /// Obține un utilizator din baza de date în funcție de ID-ul său.
@@ -180,20 +185,20 @@ namespace DataBaseDLL
                 {
                     connection.Open();
                     string query = @"
-                    UPDATE Users 
-                    SET Name = @Name, 
-                        UserStat = @UserStat, 
-                        TeamLeadId = @TeamLeadId,
-                        Username = @Username, 
-                        Password = @Password 
-                    WHERE UserId = @UserId";
+                UPDATE Users 
+                SET Name = @Name, 
+                    UserStat = @UserStat, 
+                    TeamLeadId = @TeamLeadId,
+                    Username = @Username, 
+                    Password = @Password 
+                WHERE UserId = @UserId";
                     using (var command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Name", user.Name);
                         command.Parameters.AddWithValue("@UserStat", user.UserStat.ToString());
                         command.Parameters.AddWithValue("@TeamLeadId", (object)user.TeamLeadId ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@Username", user.Username);
-                        command.Parameters.AddWithValue("@Password", user.Password);
+                        command.Parameters.AddWithValue("@Username", user.Username); // Adăugarea parametrului pentru username
+                        command.Parameters.AddWithValue("@Password", user.Password); // Adăugarea parametrului pentru parolă
                         command.Parameters.AddWithValue("@UserId", user.UserId);
                         command.ExecuteNonQuery();
                     }
@@ -205,7 +210,6 @@ namespace DataBaseDLL
                 Console.WriteLine($"An error occurred while updating the user: {ex.Message}");
             }
         }
-
         /// <summary>
         /// Șterge un utilizator din baza de date împreună cu toate task-urile asociate acestuia.
         /// </summary>

@@ -3,20 +3,12 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using TaskLibrary;
 
-namespace DataBaseDLL
+namespace DataBase
 {
-    /// <summary>
-    /// Clasă care se ocupă de operațiile legate de task-uri în baza de date.
-    /// </summary>
-
     public class TaskRepository
     {
         private string connectionString = "Data Source=database.sqlite;Version=3;";
 
-        /// <summary>
-        /// Creează un nou task în baza de date.
-        /// </summary>
-        /// <param name="task">Task-ul de creat.</param>
         public void CreateTask(TaskLibrary.Task task)
         {
             try
@@ -26,14 +18,18 @@ namespace DataBaseDLL
                     connection.Open();
                     string query = @"
                     INSERT INTO Tasks (NumeTask, DataAsignarii, OreLogate, DescriereTask, NumeAssigner) 
-                    VALUES (@NumeTask, @DataAsignarii, @OreLogate, @DescriereTask, @NumeAssigner)";
+                    VALUES (@NumeTask, @DataAsignarii, @OreLogate, @DescriereTask, @NumeAssigner);
+                    SELECT last_insert_rowid()";
                     using (var command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@NumeTask", task.NumeTask);
-                        command.Parameters.AddWithValue("@DataAsignarii", DateTime.Now);
+                        command.Parameters.AddWithValue("@DataAsignarii", task.DataAsignariiAsDateTime);
                         command.Parameters.AddWithValue("@OreLogate", 0);
                         command.Parameters.AddWithValue("@DescriereTask", task.DescriereTask);
                         command.Parameters.AddWithValue("@NumeAssigner", task.NumeAssigner);
+                        //task.TaskId = Convert.ToInt32(command.ExecuteScalar());
+
+                        command.ExecuteNonQuery();
                     }
 
                 }
@@ -45,13 +41,9 @@ namespace DataBaseDLL
             }
         }
 
-        /// <summary>
-        /// Obține o listă cu toate task-urile din baza de date.
-        /// </summary>
-        /// <returns>O listă de task-uri.</returns>
-        public List<Task> GetAllTasks()
+        public List<TaskLibrary.Task> GetAllTasks()
         {
-            var tasks = new List<Task>();
+            var tasks = new List<TaskLibrary.Task>();
             try
             {
                 using (var connection = new SQLiteConnection(connectionString))
@@ -64,11 +56,12 @@ namespace DataBaseDLL
                         {
                             while (reader.Read())
                             {
-                                var task = new Task(reader.GetString(1), reader.GetString(5))
-                                {
-                                    OreLogate = reader.GetDouble(3),
-                                    DescriereTask = reader.GetString(4)
-                                };
+                                TaskLibrary.Task task = new TaskLibrary.Task(nume: reader.GetString(1), numePersoana: reader.GetString(5));
+
+                                task.DataAsignariiAsDateTime = reader.GetDateTime(2);
+                                task.OreLogate = reader.GetDouble(3);
+                                task.DescriereTask = reader.GetString(4);
+
                                 tasks.Add(task);
                             }
                         }
@@ -82,14 +75,40 @@ namespace DataBaseDLL
             return tasks;
         }
 
-        /// <summary>
-        /// Obține un task din baza de date în funcție de ID-ul său.
-        /// </summary>
-        /// <param name="taskId">ID-ul task-ului.</param>
-        /// <returns>Task-ul găsit sau null dacă nu există.</returns>
-        public Task GetTaskById(int taskId)
+        public int GetTaskId(string numeTask)
         {
-            Task task = null;
+            int id = 0;
+            try
+            {
+                using (var connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Tasks WHERE NumeTask = @NumeTask";
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@NumeTask", numeTask);
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                id = reader.GetInt32(0);
+                            }
+                        }
+                    }
+                }
+                return id;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while retrieving the task ID: {ex.Message}");
+                return id;
+            }
+        }
+
+        public TaskLibrary.Task GetTaskByName(string numeTask)
+        {
+            int taskId = GetTaskId(numeTask);
+            TaskLibrary.Task task = new TaskLibrary.Task("newTask", "newAssigner");
             try
             {
                 using (var connection = new SQLiteConnection(connectionString))
@@ -103,11 +122,11 @@ namespace DataBaseDLL
                         {
                             if (reader.Read())
                             {
-                                task = new Task(reader.GetString(1), reader.GetString(5))
-                                {
-                                    OreLogate = reader.GetDouble(3),
-                                    DescriereTask = reader.GetString(4)
-                                };
+                                task.NumeTask= reader.GetString(1);
+                                task.DataAsignariiAsDateTime = reader.GetDateTime(2);
+                                task.OreLogate = reader.GetDouble(3);
+                                task.DescriereTask = reader.GetString(4);
+                                task.NumeAssigner = reader.GetString(5);
                             }
                         }
                     }
@@ -120,11 +139,7 @@ namespace DataBaseDLL
             return task;
         }
 
-        /// <summary>
-        /// Actualizează informațiile unui task în baza de date.
-        /// </summary>
-        /// <param name="task">Task-ul cu noile informații.</param>
-        public void UpdateTask(Task task)
+        public void UpdateTask(TaskLibrary.Task task)
         {
             try
             {
@@ -142,10 +157,11 @@ namespace DataBaseDLL
                     using (var command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@NumeTask", task.NumeTask);
-                        command.Parameters.AddWithValue("@DataAsignarii", task.DataAsignarii);
+                        command.Parameters.AddWithValue("@DataAsignarii", task.DataAsignariiAsDateTime);
                         command.Parameters.AddWithValue("@OreLogate", task.OreLogate);
                         command.Parameters.AddWithValue("@DescriereTask", task.DescriereTask);
                         command.Parameters.AddWithValue("@NumeAssigner", task.NumeAssigner);
+                        command.Parameters.AddWithValue("@TaskId", GetTaskId(task.NumeTask));
                         command.ExecuteNonQuery();
                     }
                 }
@@ -157,11 +173,7 @@ namespace DataBaseDLL
             }
         }
 
-        /// <summary>
-        /// Șterge un task din baza de date împreună cu toate atribuirile acestuia către utilizatori.
-        /// </summary>
-        /// <param name="taskId">ID-ul task-ului de șters.</param>
-        public void DeleteTask(int taskId)
+        public void DeleteTask(string numeTask)
         {
             try
             {
@@ -173,7 +185,7 @@ namespace DataBaseDLL
                     string deleteUserTasksQuery = "DELETE FROM UserTasks WHERE TaskId = @TaskId";
                     using (var deleteUserTasksCommand = new SQLiteCommand(deleteUserTasksQuery, connection))
                     {
-                        deleteUserTasksCommand.Parameters.AddWithValue("@TaskId", taskId);
+                        deleteUserTasksCommand.Parameters.AddWithValue("@TaskId", GetTaskId(numeTask));
                         deleteUserTasksCommand.ExecuteNonQuery();
                     }
 
@@ -181,7 +193,7 @@ namespace DataBaseDLL
                     string deleteTaskQuery = "DELETE FROM Tasks WHERE TaskId = @TaskId";
                     using (var deleteTaskCommand = new SQLiteCommand(deleteTaskQuery, connection))
                     {
-                        deleteTaskCommand.Parameters.AddWithValue("@TaskId", taskId);
+                        deleteTaskCommand.Parameters.AddWithValue("@TaskId", GetTaskId(numeTask));
                         deleteTaskCommand.ExecuteNonQuery();
                     }
                 }

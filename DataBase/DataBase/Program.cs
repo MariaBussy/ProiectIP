@@ -7,7 +7,7 @@ namespace DataBase
     {
         static void Main(string[] args)
         {
-            Database database = new Database(); // Ensure the database is created
+            /*Database database = new Database(); // Ensure the database is created
             UserRepository userRepository = new UserRepository();
             TaskRepository taskRepository = new TaskRepository();
             UserTaskRepository userTaskRepository = new UserTaskRepository();
@@ -72,9 +72,12 @@ namespace DataBase
                         break;
                 }
             }
+        }*/
         }
+    }
+}
 
-        static void DisplayAllUsers(UserRepository userRepository)
+        /*static void DisplayAllUsers(UserRepository userRepository)
         {
             try
             {
@@ -99,7 +102,7 @@ namespace DataBase
                 Console.WriteLine("\nAll Tasks:");
                 foreach (var task in tasks)
                 {
-                    Console.WriteLine($"TaskId: {task.TaskId}, NumeTask: {task.NumeTask}, DataAsignarii: {task.DataAsignarii}, OreLogate: {task.OreLogate}, DescriereTask: {task.DescriereTask}, NumeAssigner: {task.NumeAssigner}");
+                    Console.WriteLine($"TaskId: {taskRepository.GetTaskId(task.NumeTask)}, NumeTask: {task.NumeTask}, DataAsignarii: {task.GetDataAsignarii}, OreLogate: {task.OreLogate}, DescriereTask: {task.DescriereTask}, NumeAssigner: {task.NumeAssigner}");
                 }
             }
             catch (Exception ex)
@@ -377,5 +380,4 @@ namespace DataBase
             }
         }
 
-    }
-}
+    }*/
