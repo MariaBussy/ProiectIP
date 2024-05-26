@@ -1,0 +1,34 @@
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\DataBase.exe.config
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\DataBase.exe
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\DataBase.pdb
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\EntityFramework.dll
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\System.Data.SQLite.dll
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\EntityFramework.xml
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\bin\Debug\System.Data.SQLite.xml
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\obj\Debug\DataBase.csproj.AssemblyReference.cache
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\obj\Debug\DataBase.csproj.CoreCompileInputs.cache
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\obj\Debug\DataBase.csproj.Up2Date
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\obj\Debug\DataBase.exe
+C:\Users\rex\Facultate\Anul III\semestrul 2\IP\PROIECT\ProiectIP\DataBase\DataBase\obj\Debug\DataBase.pdb
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\obj\Debug\DataBase.csproj.AssemblyReference.cache
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\obj\Debug\DataBase.csproj.CoreCompileInputs.cache
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\obj\Debug\DataBase.exe
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\obj\Debug\DataBase.pdb
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\bin\Debug\DataBase.exe.config
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\bin\Debug\DataBase.exe
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\bin\Debug\DataBase.pdb
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\bin\Debug\EntityFramework.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\bin\Debug\EntityFramework.SqlServer.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\bin\Debug\System.Data.SQLite.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\bin\Debug\System.Data.SQLite.EF6.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\bin\Debug\System.Data.SQLite.Linq.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\bin\Debug\TaskLibrary.dll
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\bin\Debug\EntityFramework.xml
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\bin\Debug\EntityFramework.SqlServer.xml
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\bin\Debug\System.Data.SQLite.xml
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\bin\Debug\TaskLibrary.pdb
+D:\IP\PROIECT\MariaBussy\ProiectIP\DataBase\DataBase\obj\Debug\DataBase.csproj.CopyComplete

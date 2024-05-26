@@ -1,0 +1,196 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A06A7B60-18CB-434E-A20A-F0D068CCCF3F}|UnitTestDataBase\\UnitTestDataBase.csproj|c:\\users\\rex\\facultate\\anul iii\\semestrul 2\\ip\\proiect\\proiectip\\database\\unittestdatabase\\userrepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A06A7B60-18CB-434E-A20A-F0D068CCCF3F}|UnitTestDataBase\\UnitTestDataBase.csproj|solutionrelative:unittestdatabase\\userrepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A06A7B60-18CB-434E-A20A-F0D068CCCF3F}|UnitTestDataBase\\UnitTestDataBase.csproj|c:\\users\\rex\\facultate\\anul iii\\semestrul 2\\ip\\proiect\\proiectip\\database\\unittestdatabase\\databasetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A06A7B60-18CB-434E-A20A-F0D068CCCF3F}|UnitTestDataBase\\UnitTestDataBase.csproj|solutionrelative:unittestdatabase\\databasetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C37975F-F870-4B91-80AA-1F352701756A}|DataBase\\DataBase.csproj|C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\database\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C37975F-F870-4B91-80AA-1F352701756A}|DataBase\\DataBase.csproj|solutionrelative:database\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C37975F-F870-4B91-80AA-1F352701756A}|DataBase\\DataBase.csproj|C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\database\\usertaskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C37975F-F870-4B91-80AA-1F352701756A}|DataBase\\DataBase.csproj|solutionrelative:database\\usertaskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C37975F-F870-4B91-80AA-1F352701756A}|DataBase\\DataBase.csproj|C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\database\\taskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C37975F-F870-4B91-80AA-1F352701756A}|DataBase\\DataBase.csproj|solutionrelative:database\\taskrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C37975F-F870-4B91-80AA-1F352701756A}|DataBase\\DataBase.csproj|c:\\users\\rex\\facultate\\anul iii\\semestrul 2\\ip\\proiect\\proiectip\\database\\database\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C37975F-F870-4B91-80AA-1F352701756A}|DataBase\\DataBase.csproj|solutionrelative:database\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C37975F-F870-4B91-80AA-1F352701756A}|DataBase\\DataBase.csproj|C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\database\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C37975F-F870-4B91-80AA-1F352701756A}|DataBase\\DataBase.csproj|solutionrelative:database\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C37975F-F870-4B91-80AA-1F352701756A}|DataBase\\DataBase.csproj|C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\database\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C37975F-F870-4B91-80AA-1F352701756A}|DataBase\\DataBase.csproj|solutionrelative:database\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C37975F-F870-4B91-80AA-1F352701756A}|DataBase\\DataBase.csproj|C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\database\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C37975F-F870-4B91-80AA-1F352701756A}|DataBase\\DataBase.csproj|solutionrelative:database\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\DataBase\\User.cs",
+              "RelativeDocumentMoniker": "DataBase\\User.cs",
+              "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\DataBase\\User.cs",
+              "RelativeToolTip": "DataBase\\User.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T09:34:41.953Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DataBaseTest.cs",
+              "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\UnitTestDataBase\\DataBaseTest.cs",
+              "RelativeDocumentMoniker": "UnitTestDataBase\\DataBaseTest.cs",
+              "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\UnitTestDataBase\\DataBaseTest.cs",
+              "RelativeToolTip": "UnitTestDataBase\\DataBaseTest.cs",
+              "ViewState": "AQIAAEkAAAAAAAAAAAAowGUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T19:07:55.537Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TaskRepository.cs",
+              "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\DataBase\\TaskRepository.cs",
+              "RelativeDocumentMoniker": "DataBase\\TaskRepository.cs",
+              "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\DataBase\\TaskRepository.cs",
+              "RelativeToolTip": "DataBase\\TaskRepository.cs",
+              "ViewState": "AQIAAJcAAAAAAAAAAAAswKsAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T10:37:33.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserTaskRepository.cs",
+              "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\DataBase\\UserTaskRepository.cs",
+              "RelativeDocumentMoniker": "DataBase\\UserTaskRepository.cs",
+              "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\DataBase\\UserTaskRepository.cs",
+              "RelativeToolTip": "DataBase\\UserTaskRepository.cs",
+              "ViewState": "AQIAAJEAAAAAAAAAAAAswK4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-23T14:57:01.63Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Database.cs",
+              "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\DataBase\\Database.cs",
+              "RelativeDocumentMoniker": "DataBase\\Database.cs",
+              "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\DataBase\\Database.cs",
+              "RelativeToolTip": "DataBase\\Database.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEoAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T10:11:38.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserRepositoryTests.cs",
+              "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\UnitTestDataBase\\UserRepositoryTests.cs",
+              "RelativeDocumentMoniker": "UnitTestDataBase\\UserRepositoryTests.cs",
+              "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\UnitTestDataBase\\UserRepositoryTests.cs",
+              "RelativeToolTip": "UnitTestDataBase\\UserRepositoryTests.cs",
+              "ViewState": "AQIAAHQAAAAAAAAAAAAowJAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T18:41:11.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\DataBase\\UserRepository.cs",
+              "RelativeDocumentMoniker": "DataBase\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\DataBase\\UserRepository.cs",
+              "RelativeToolTip": "DataBase\\UserRepository.cs",
+              "ViewState": "AQIAAN4AAAAAAAAAAAAswO4AAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T10:12:49.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Task.cs",
+              "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\DataBase\\Task.cs",
+              "RelativeDocumentMoniker": "DataBase\\Task.cs",
+              "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\DataBase\\Task.cs",
+              "RelativeToolTip": "DataBase\\Task.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T09:35:08.14Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\DataBase\\Program.cs",
+              "RelativeDocumentMoniker": "DataBase\\Program.cs",
+              "ToolTip": "C:\\Users\\rex\\Facultate\\Anul III\\semestrul 2\\IP\\PROIECT\\ProiectIP\\DataBase\\DataBase\\Program.cs",
+              "RelativeToolTip": "DataBase\\Program.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAAQwBEAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T09:34:23.699Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 837,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
