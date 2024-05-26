@@ -101,7 +101,7 @@ namespace Interfata
         /// </summary>
         private void Button_About(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Project developed by Busaga Maria, Ciosnar Dragos, Asofronie Rares and Adam Iasmina", "Microtask", MessageBoxButton.OK, MessageBoxImage.Information);
+            System.Windows.Forms.Help.ShowHelp(null, "file://C://Users//EU//Desktop//ProiectIP-Interfata//Interfata//Interfata//bin//Debug//Microtask.chm");
         }
 
         /// <summary>

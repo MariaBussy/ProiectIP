@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Interfata</name>
+    </assembly>
+    <members>
+        <member name="T:Interfata.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:Interfata.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Interfata.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:Interfata.Login">
+            <summary>
+            Login
+            </summary>
+        </member>
+        <member name="M:Interfata.Login.#ctor">
+            <summary>
+            Constructor pentru Login
+            </summary>
+        </member>
+        <member name="M:Interfata.Login.VerificareBD(System.String,System.String)">
+            <summary>
+            Verifica daca exista un utilizator in baza de date cu username-ul si parola date
+            </summary>
+            <param name="username">Numele de utilizator</param>
+            <param name="password">Parola</param>
+            <returns>True daca utilizatorul exista, altfel False</returns>
+        </member>
+        <member name="M:Interfata.Login.Button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Eveniment pentru butonul de autentificare
+            </summary>
+        </member>
+        <member name="M:Interfata.Login.Button_Click2(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Eveniment pentru butonul de inchidere a aplicatiei
+            </summary>
+        </member>
+        <member name="M:Interfata.Login.Button_About(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Eveniment pentru butonul "About"
+            </summary>
+        </member>
+        <member name="M:Interfata.Login.SignIn_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Deschide popup-ul pentru sign in si dezactiveaza butonul de sign in
+            </summary>
+        </member>
+        <member name="M:Interfata.Login.OkButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Eveniment pentru butonul de confirmare a sign in-ului
+            </summary>
+        </member>
+        <member name="M:Interfata.Login.CancelButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Inchide popup-ul pentru sign in si reactiveaza butonul de sign in
+            </summary>
+        </member>
+        <member name="M:Interfata.Login.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Interfata.MainWindow">
+            <summary>
+            Interaction logic for MainWindow.xaml
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.#ctor">
+            <summary>
+            Constructor pentru fereastra principala unde initializam fereastra, ne conectam la baza de date si declaram obiectele pentru functionalitatile tabelelor.
+            De asemenea, apelam si functia de incarcare a paginii de login.
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.MainWindow_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Aceasta functie incarca pagina de login, o afiseaza si ascunde pagina principala (main form-ul).
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Interfata.MainWindow.LoginWindow_Closed(System.Object,System.EventArgs)">
+            <summary>
+            Aceasta functie este apelata in momentul in care autentificarea utilizatorului a fost facuta cu succes.
+            Se initializeaza clientii si le sunt atribuite task-urile la nivel local. De asemenea, se seteaza starea butoanelor ( in functie de permisiunile utilizatorului curent)
+            si se afiseaza taskurile
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Interfata.MainWindow.SetViewTask">
+            <summary>
+            Functie care creeaza in listele Doing si To Do obiecte de tip CheckBox pentru gestionarea si selectarea taskurilor care vor fi pe parcurs modificate.
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.SetActiveUserLogin(System.String,System.String)">
+            <summary>
+            In aceasta functie se implementeaza afisarea datelor userului curent pe niste label uri si se populeaza tabela de membrii care sunt sub tutela userului curent.
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+        </member>
+        <member name="M:Interfata.MainWindow.SetActiveUserName(System.String)">
+            <summary>
+            Implementare asemanatoare cu functia SetActiveUserLogin doar ca nu mai populeaza tabela membrii, ci schimba stric userul curent.
+            Este folosita cand cineva vrea sa vada taskurile unui utilizator sub indrumarea lui.
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:Interfata.MainWindow.PopulateMembers(System.Int32)">
+            <summary>
+            Functia propriu-zisa de populare a tabelei de membrii pe principiul adaugarii de checkBox uri. Se gestioneaza si evenimentele de checked, unchecked box unde sunt apelate functii corespunzatoare.
+            </summary>
+            <param name="teamLeadId"></param>
+        </member>
+        <member name="M:Interfata.MainWindow.InitialiseClients">
+            <summary>
+            In aceasta functie sunt initializati toti clientii la nivel local, specificandu-le numele si statutul. Datele sunt extrase din baza de date si membrii sunt adaugti intr-o lista pentru 
+            gestionarea lor in alte implementari.
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.InitialiseTasksForClients">
+            <summary>
+            Dupa initializarea clientilor la nivel local, pentru fiecare membru ii trebuie extrasa si lista de taskuri din baza de date (lista salvata tot local).
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.SetButtonsPermision">
+            <summary>
+            Functie care stabileste accesul la butoane in functie de permisiunile utilizatorului curent.
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.CheckBox_Checked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Aici este implementata gestiunea userilor selectati din lista de membrii. Se salveaza userul selectat anterior pentru a se putea intoarce la el cand se deselecteaza.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Interfata.MainWindow.CheckBox_Unchecked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Aici se gestioneaza situatia deselectarii unui user si revenirea la starea initiala.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Interfata.MainWindow.MenuItem_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Functie simpla de implementare a butonului de back.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Interfata.MainWindow.Button_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Gestionarea apasarii butonului de add time. Se verifica taskurile selectate si se introduc intr-o lista pentru a le adauga un timp de lucru.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Interfata.MainWindow.OkButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Verifica daca textul introdus in timeTextBox este valid si actualizeaza taskurile corespunzator.
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.CancelButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Inchide popup-ul pentru adaugare timp si reactiveaza butonul.
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.Add_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Deschide popup-ul pentru adaugarea unui task nou si dezactiveaza butonul de adaugare.
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.OkButtonTask_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Adauga un task nou pentru utilizatorul curent si il salveaza in baza de date.
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.CancelButtonTask_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Inchide popup-ul pentru adaugarea unui task nou si reactiveaza butonul de adaugare.
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.Add_Member_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Deschide popup-ul pentru adaugarea unui membru nou si dezactiveaza butonul de adaugare.
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.OkAddMember_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Adauga un membru nou si il salveaza in baza de date.
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.CancelAddMember_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Inchide popup-ul pentru adaugarea unui membru nou si reactiveaza butonul de adaugare.
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.Delete_Member_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Deschide popup-ul pentru adaugarea unui membru nou si dezactiveaza butonul de adaugare.
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.OkDeleteMember_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Sterge un membru si actualizeaza baza de date, avand grija de stergerea in cascada.
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.CancelDeleteMember_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Inchide popup-ul pentru stergerea unui membru si reactiveaza butonul de stergere.
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.Delete_Task_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Functie care implementeaza ideea de stergere a unui task selectat din listele To Do si Doing. Cand se sterge se actualizeaza atat la nivel local listele de task uri cat si taskurile din baza de date.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Interfata.MainWindow.Modify_Task_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+             Deschide popup-ul pentru adaugarea unui membru nou si dezactiveaza butonul de adaugare.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Interfata.MainWindow.OkModifyTask_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Functie care implementeaza conceptul de modificare a unui task. Se creeaza un nou obiect task care va fi folosit pentru inlocuirea celui vechi.
+            Schimbarea se face atat la nivel local cat si la nivel de baze de date.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Interfata.MainWindow.CancelModifyTask_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+             Inchide popup-ul pentru stergerea unui membru si reactiveaza butonul de stergere.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Interfata.MainWindow.FindVisualChild``1(System.Windows.DependencyObject)">
+            <summary>
+            Metoda generica pentru a gasi un copil vizual de un anumit tip.
+            </summary>
+        </member>
+        <member name="M:Interfata.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Interfata.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Interfata.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Interfata.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>
