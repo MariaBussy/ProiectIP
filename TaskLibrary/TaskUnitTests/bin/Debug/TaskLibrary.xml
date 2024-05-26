@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TaskLibrary</name>
+    </assembly>
+    <members>
+        <member name="M:TaskLibrary.Task.#ctor(System.String@,System.String@)">
+            <summary>
+            Constructor to initialize a new Task with a name and assigner.
+            </summary>
+            <param name="nume">The name of the task, which must be at least 5 characters long.</param>
+            <param name="numePersoana">The name of the assigner, which must be at least 5 characters long.</param>
+            <exception cref="T:System.Exception">Thrown when the task name or assigner name is invalid.</exception>
+        </member>
+        <member name="P:TaskLibrary.Task.NumeTask">
+            <summary>
+            Gets or sets the name of the task.
+            </summary>
+            <exception cref="T:System.Exception">Thrown when the task name is invalid.</exception>
+        </member>
+        <member name="P:TaskLibrary.Task.DataAsignarii">
+            <summary>
+            Gets the assignment date of the task in "dd-MM-yyyy" format.
+            </summary>
+        </member>
+        <member name="P:TaskLibrary.Task.OreLogate">
+            <summary>
+            Gets or sets the logged hours for the task.
+            </summary>
+            <exception cref="T:System.Exception">Thrown when the value for logged hours is less than or equal to 0.</exception>
+        </member>
+        <member name="P:TaskLibrary.Task.DescriereTask">
+            <summary>
+            Gets or sets the description of the task.
+            </summary>
+        </member>
+        <member name="P:TaskLibrary.Task.NumeAssigner">
+            <summary>
+            Gets or sets the name of the assigner.
+            </summary>
+            <exception cref="T:System.Exception">Thrown when the assigner name is invalid.</exception>
+        </member>
+    </members>
+</doc>

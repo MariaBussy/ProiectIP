@@ -14,3 +14,4 @@ D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\obj\Debug\TaskUnitT
 D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\obj\Debug\TaskUnitTests.csproj.CopyComplete
 D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\obj\Debug\TaskUnitTests.dll
 D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\obj\Debug\TaskUnitTests.pdb
+D:\IP\PROIECT\MariaBussy\ProiectIP\TaskLibrary\TaskUnitTests\bin\Debug\TaskLibrary.xml

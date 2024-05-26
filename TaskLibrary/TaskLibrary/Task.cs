@@ -1,4 +1,14 @@
-﻿using System;
+﻿/**************************************************************************
+ *                                                                        *
+ *  Description: Custom Library Class for creating the structure          *
+ *                  of a Task and manipulating it                         *
+ *  Copyright:   (c) 2024, Bușaga Maria                                   *
+ *                                                                        *
+ *                                                                        *
+ **************************************************************************/
+
+
+using System;
 
 namespace TaskLibrary
 {
