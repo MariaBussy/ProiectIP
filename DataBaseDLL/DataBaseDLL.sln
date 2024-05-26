@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34114.132
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseDLL", "DataBaseDLL\DataBaseDLL.csproj", "{A03864D3-62E1-41BB-9853-71998B964619}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestDataBase", "UnitTestDataBase\UnitTestDataBase.csproj", "{C621E256-C9E4-47D4-BF56-DD1C273FA6A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A03864D3-62E1-41BB-9853-71998B964619}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A03864D3-62E1-41BB-9853-71998B964619}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A03864D3-62E1-41BB-9853-71998B964619}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A03864D3-62E1-41BB-9853-71998B964619}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C621E256-C9E4-47D4-BF56-DD1C273FA6A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C621E256-C9E4-47D4-BF56-DD1C273FA6A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C621E256-C9E4-47D4-BF56-DD1C273FA6A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C621E256-C9E4-47D4-BF56-DD1C273FA6A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C6278D1-75C0-4F44-85B9-3804914DB3AB}
+	EndGlobalSection
+EndGlobal
