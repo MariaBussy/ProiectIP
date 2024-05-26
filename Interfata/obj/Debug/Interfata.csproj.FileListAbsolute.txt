@@ -16,3 +16,12 @@ C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\obj\Debug\Interfata.
 C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\obj\Debug\Interfata.pdb
 C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\obj\Debug\Login.g.cs
 C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\obj\Debug\Login.baml
+C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\obj\Debug\Interfata.csproj.CopyComplete
+C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\bin\Debug\EntityFramework.dll
+C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\bin\Debug\System.Data.SQLite.dll
+C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\bin\Debug\EntityFramework.xml
+C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\bin\Debug\System.Data.SQLite.xml

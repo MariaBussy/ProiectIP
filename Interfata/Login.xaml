@@ -13,13 +13,33 @@
                 <GradientStop Color="LightGreen" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Button Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Width="120" Background="#FF4CAF50" BorderBrush="#FF388E3C" Foreground="White" FontSize="12" FontWeight="Bold" Padding="10" Click="Button_Click" Margin="0,280,0,0" FontFamily="Cascadia Code"/>
+        <Button Content="Log In" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="120" Background="#FF4CAF50" BorderBrush="#FF388E3C" Foreground="White" FontSize="12" FontWeight="Bold" Padding="10" Click="Button_Click" Margin="248,280,0,0" FontFamily="Cascadia Code"/>
         <Button Content="Exit" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Width="120" Background="#FF4CAF50" BorderBrush="#FF388E3C" Foreground="White" FontSize="12" FontWeight="Bold" Padding="10" Click="Button_Click2" Margin="0,348,0,0" FontFamily="Cascadia Code"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,153,0,0" VerticalAlignment="Top" Width="200" FontSize="16" Padding="5" Background="White" Foreground="Black" BorderBrush="Gray" BorderThickness="1" FontFamily="Cascadia Code"/>
+        <TextBox Name ="username" HorizontalAlignment="Center" Margin="0,153,0,0" VerticalAlignment="Top" Width="200" FontSize="16" Padding="5" Background="White" Foreground="Black" BorderBrush="Gray" BorderThickness="1" FontFamily="Cascadia Code"/>
         <Label Content="Username" HorizontalAlignment="Left" Margin="285,127,0,0" VerticalAlignment="Top" Width="120" FontFamily="Cascadia Code"/>
-        <PasswordBox HorizontalAlignment="Center" Margin="0,213,0,0" VerticalAlignment="Top" Width="200" FontSize="14" Padding="5" Background="White" Foreground="Black" BorderBrush="Gray" BorderThickness="1"/>
+        <PasswordBox Name="password" HorizontalAlignment="Center" Margin="0,213,0,0" VerticalAlignment="Top" Width="200" FontSize="14" Padding="5" Background="White" Foreground="Black" BorderBrush="Gray" BorderThickness="1"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="285,191,0,0" VerticalAlignment="Top" Width="120" FontFamily="Cascadia Code"/>
         <Button Content="About" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="59" Background="#FF4CAF50" BorderBrush="#FF388E3C" Foreground="White" FontSize="12" FontWeight="Bold" Padding="10" Click="Button_About" Margin="689,348,0,0" FontFamily="Cascadia Code"/>
         <Label Content="Microtask" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="60" FontWeight="Bold" Foreground="DarkBlue" Margin="0,32,0,0"/>
+        <Button Name="Sign_Button" Content="Sign In" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="120" Background="#FF4CAF50" BorderBrush="#FF388E3C" Foreground="White" FontSize="12" FontWeight="Bold" Padding="10" Click="SignIn_Click" Margin="432,280,0,0" FontFamily="Cascadia Code"/>
+        <Popup Name="SignIn" Placement="Mouse" IsOpen="False">
+            <Border Background="LightGreen" BorderThickness="1" Padding="10">
+                <StackPanel>
+                    <Label Name="timeLabel" Content="Add new user: "/>
+                    <Label Content="Name: "/>
+                    <TextBox Name="Name" Width="200" Margin="0,0,0,10"/>
+                    <Label Content="Status (0-Manager,1-TeamLead,2-Developer): "/>
+                    <TextBox Name="Stat" Width="200" Margin="0,0,0,10"/>
+                    <Label Content="Username: "/>
+                    <TextBox Name="signin_username" Width="200" Margin="0,0,0,10"/>
+                    <Label Content="Password: "/>
+                    <TextBox Name="signin_password" Width="200" Margin="0,0,0,10"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="  Left">
+                        <Button Content="OK" Width="75" Margin="5" Click="OkButton_Click"/>
+                        <Button Content="Cancel" Width="75" Margin="5" Click="CancelButton_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
     </Grid>
 </Window>

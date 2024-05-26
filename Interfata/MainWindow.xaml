@@ -15,7 +15,7 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="#73BCD4" BorderThickness="1" CornerRadius="8" Margin="4"  >
-            <Menu VerticalAlignment="Center" Height="25" BorderThickness="0.5" FontSize="16" FontWeight="Bold" Width="880" Foreground="White" RenderTransformOrigin="0.5,0.5">
+            <Menu VerticalAlignment="Center" Height="25" BorderThickness="0.5" FontSize="16" FontWeight="Bold" Width="715" Foreground="White" RenderTransformOrigin="0.5,0.5">
                 <Menu.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -37,34 +37,29 @@
                         <Image Source="C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\back.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Add Task">
+                <MenuItem Name="Add_Task" Header="Add Task" Click="Add_Click">
                     <MenuItem.Icon>
                         <Image Source="C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\add-40.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Delete Task">
+                <MenuItem Name="Delete_Task" Header="Delete Task" Click="Delete_Task_Click">
                     <MenuItem.Icon>
                         <Image Source="C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\minus.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Modify Task">
+                <MenuItem Name="Modify_Task" Header="Modify Task" Click="Modify_Task_Click">
                     <MenuItem.Icon>
                         <Image Source="C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\edit.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Add Member" IsEnabled="False">
+                <MenuItem Name="Add_Member" Header="Add Member" Click="Add_Member_Click">
                     <MenuItem.Icon>
                         <Image Source="C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\add.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Delete Member" IsEnabled="False">
+                <MenuItem Name="Delete_Member" Header="Delete Member" Click="Delete_Member_Click">
                     <MenuItem.Icon>
                         <Image Source="C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\delete.png"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Header="Modify Member" IsEnabled="False">
-                    <MenuItem.Icon>
-                        <Image Source="C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\edit.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </Menu>
@@ -127,20 +122,6 @@
                 </Label>
             </WrapPanel>
         </Border>
-        <Border HorizontalAlignment="Right" VerticalAlignment="Top" BorderBrush="white" BorderThickness="4" CornerRadius="8"  Margin="0,38,56,0" >
-            <WrapPanel Background="White" Width="211" Height="310" >
-                <Label Content="Done" Width="211" Margin="2" FontFamily="Cascadia Code" FontWeight="Bold">
-                    <Label.Style>
-                        <Style TargetType="Label">
-                            <Setter Property="Foreground" Value="Black"/>
-                            <Setter Property="Background" Value="#D3D3D3"/>
-                            <Setter Property="FontFamily" Value="Helvetica"/>
-                            <Setter Property="FontSize" Value="16"/>
-                        </Style>
-                    </Label.Style>
-                </Label>
-            </WrapPanel>
-        </Border>
 
         <Border HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderBrush="white" BorderThickness="4" CornerRadius="8"  Margin="40" >
             <WrapPanel Background="White" Width="400" Height="240" >
@@ -170,36 +151,18 @@
                     </Label.Style>
                 </Label>
                 <ListBox Width="120" Height="211" x:Name="ToDo_Copy" IsHitTestVisible ="False" >
-                    <ListBoxItem Content="First Name:" Background="#D3D3D3" FontFamily="Cascadia Code" FontSize="15" FontWeight="Bold">
-                    </ListBoxItem>
-                    --------------------
-                    <ListBoxItem Content="Last Name:" Background="#D3D3D3" FontFamily="Cascadia Code" FontSize="15" FontWeight="Bold">
+                    <ListBoxItem Content="Name:" Background="#D3D3D3" FontFamily="Cascadia Code" FontSize="15" FontWeight="Bold">
                     </ListBoxItem>
                     --------------------
                     <ListBoxItem Content="Status:" Background="#D3D3D3" FontFamily="Cascadia Code" FontSize="15" FontWeight="Bold">
                     </ListBoxItem>
                     --------------------
                 </ListBox>
-                <Label Content="Adam" HorizontalAlignment="Center" VerticalAlignment="Top" Width="278" Height="36" FontFamily="Cascadia Code" FontSize="16"/>
+                <Label Name="active_name" Content="Ciosnar Dragos" HorizontalAlignment="Center" VerticalAlignment="Top" Width="278" Height="36" FontFamily="Cascadia Code" FontSize="16"/>
 
             </WrapPanel>
         </Border>
-        <Button HorizontalAlignment="Left" Margin="312,127,0,0" VerticalAlignment="Top" Height="29" Width="73" BorderThickness="2">
-            <Image Source="C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\left.png" Height="19" Width="23" RenderTransformOrigin="0.435,0.598">
-                <Image.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="180.396"/>
-                        <TranslateTransform X="3.003" Y="-3.714"/>
-                    </TransformGroup>
-                </Image.RenderTransform>
-            </Image>
-        </Button>
-        <Button HorizontalAlignment="Left" Margin="312,199,0,0" VerticalAlignment="Top" Height="29" Width="73" BorderThickness="2">
-            <Image Source="C:\Users\EU\Desktop\ProiectIP-Interfata\Interfata\Interfata\left.png" Height="19" Width="23"/>
-        </Button>
-        <ListBox Margin="444,80,444,337">
+        <ListBox Name="Doing" Margin="439,80,444,317">
             <ListBoxItem Background="Yellow" FontFamily="Cascadia Code" FontSize="15" FontWeight="Bold">
                 <CheckBox x:Name="Task11">
                     <StackPanel Orientation="Horizontal">
@@ -229,38 +192,8 @@
                 </CheckBox>
             </ListBoxItem>
         </ListBox>
-        <ListBox Margin="814,80,64,337">
-            <ListBoxItem Background="LightGreen" FontFamily="Cascadia Code" FontSize="15" FontWeight="Bold">
-                <CheckBox x:Name="Task21">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Task 1"/>
-                    </StackPanel>
-                </CheckBox>
-            </ListBoxItem>
-            <ListBoxItem Background="LightGreen" FontFamily="Cascadia Code" FontSize="15" FontWeight="Bold">
-                <CheckBox x:Name="Task22">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Task 2"/>
-                    </StackPanel>
-                </CheckBox>
-            </ListBoxItem>
-            <ListBoxItem Background="LightGreen" FontFamily="Cascadia Code" FontSize="15" FontWeight="Bold">
-                <CheckBox x:Name="Task23">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Task 3"/>
-                    </StackPanel>
-                </CheckBox>
-            </ListBoxItem>
-            <ListBoxItem Background="LightGreen" FontFamily="Cascadia Code" FontSize="15" FontWeight="Bold">
-                <CheckBox x:Name="Task24">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Task 4"/>
-                    </StackPanel>
-                </CheckBox>
-            </ListBoxItem>
-        </ListBox>
-        <Button Name="timeButton" Content="Add Time" HorizontalAlignment="Left" Margin="682,177,0,0" VerticalAlignment="Top" Height="35" Width="95" FontFamily="Cascadia Code" FontWeight="Bold" FontSize="14" BorderThickness="2" Click="Button_Click"/>
-        <ListBox Margin="649,415,56,58">
+        <Button Name="timeButton" Content="Add Time" HorizontalAlignment="Center" Margin="0,483,0,0" VerticalAlignment="Top" Height="35" Width="96" FontFamily="Cascadia Code" FontWeight="Bold" FontSize="14" BorderThickness="2" Click="Button_Click"/>
+        <ListBox Name="Team_Members" Margin="649,415,56,58">
             <ListBoxItem Background="Pink" FontFamily="Cascadia Code" FontSize="15" FontWeight="Bold">
                 <CheckBox x:Name="Member1">
                     <StackPanel Orientation="Horizontal">
@@ -303,8 +236,75 @@
                 </StackPanel>
             </Border>
         </Popup>
-        <Label Content="Iasmina-Felicia" HorizontalAlignment="Left" Margin="163,445,0,0" VerticalAlignment="Top" Width="282" Height="37" FontFamily="Cascadia Code" FontSize="16"/>
-        <Label Content="BOSS" HorizontalAlignment="Left" Margin="163,487,0,0" VerticalAlignment="Top" Width="282" Height="36" FontFamily="Cascadia Code" FontSize="16"/>
+        <!--pentru pop up add task-->
+        <Popup Name="taskPOPUP" Placement="Mouse" IsOpen="False">
+            <Border Background="LightGreen" BorderThickness="1" Padding="10">
+                <StackPanel>
+                    <Label Content="Add new task: "/>
+                    <Label Content="Task Name: "/>
+                    <TextBox Name="taskName" Width="200" Margin="0,0,0,10"/>
+                    <Label Content="Task Description: "/>
+                    <TextBox Name="taskDesc" Width="200" Margin="0,0,0,10"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="  Left">
+                        <Button Content="OK" Width="75" Margin="5" Click="OkButtonTask_Click"/>
+                        <Button Content="Cancel" Width="75" Margin="5" Click="CancelButtonTask_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
+        <Label Name="status" Content="Manager" HorizontalAlignment="Left" Margin="163,445,0,0" VerticalAlignment="Top" Width="282" Height="37" FontFamily="Cascadia Code" FontSize="16"/>
+        <Popup Name="Member_Add" Placement="Mouse" IsOpen="False">
+            <Border Background="LightGreen" BorderThickness="1" Padding="10">
+                <StackPanel>
+                    <Label Content="Add new member: "/>
+                    <Label Content="Name: "/>
+                    <TextBox Name="MemberAddName" Width="200" Margin="0,0,0,10"/>
+                    <Label Content="Username: "/>
+                    <TextBox Name="MemberAddUsername" Width="200" Margin="0,0,0,10"/>
+                    <Label Content="Password: "/>
+                    <TextBox Name="MemberAddPass" Width="200" Margin="0,0,0,10"/>
+                    <Label Content="Add Member to User : "/>
+                    <Label Content="(leave blank if you want to add member to current user)"/>
+                    <TextBox Name="AddMemberUser" Width="200" Margin="0,0,0,10"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="  Left">
+                        <Button Content="OK" Width="75" Margin="5" Click="OkAddMember_Click"/>
+                        <Button Content="Cancel" Width="75" Margin="5" Click="CancelAddMember_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
+
+        <Popup Name="Member_Delete" Placement="Mouse" IsOpen="False">
+            <Border Background="LightGreen" BorderThickness="1" Padding="10">
+                <StackPanel>
+                    <Label Content="Delete member: "/>
+                    <Label Content="Name: "/>
+                    <TextBox Name="MemberDeleteName" Width="200" Margin="0,0,0,10"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="  Left">
+                        <Button Content="OK" Width="75" Margin="5" Click="OkDeleteMember_Click"/>
+                        <Button Content="Cancel" Width="75" Margin="5" Click="CancelDeleteMember_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
+
+        <Popup Name="Task_Modify" Placement="Mouse" IsOpen="False">
+            <Border Background="LightGreen" BorderThickness="1" Padding="10">
+                <StackPanel>
+                    <Label Content="Modify member: "/>
+                    <Label Content="New Task Hours: "/>
+                    <TextBox Name="Modify_hours" Width="200" Margin="0,0,0,10"/>
+                    <Label Content="New Task Description: "/>
+                    <TextBox Name="Modify_description" Width="200" Margin="0,0,0,10"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="  Left">
+                        <Button Content="OK" Width="75" Margin="5" Click="OkModifyTask_Click"/>
+                        <Button Content="Cancel" Width="75" Margin="5" Click="CancelModifyTask_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
+
+        <Label Content="Microtask" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="60" FontWeight="Bold" Foreground="DarkBlue" Margin="755,154,0,0"/>
 
     </Grid>
 
