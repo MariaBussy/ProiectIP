@@ -1,13 +1,21 @@
-﻿using System;
+﻿using DataBase;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 
 namespace DataBase
 {
+    /// <summary>
+    /// Clasă care se ocupă de operațiile legate de utilizatori în baza de date.
+    /// </summary>
     public class UserRepository
     {
         private string connectionString = "Data Source=database.sqlite;Version=3;";
 
+        /// <summary>
+        /// Creează un nou utilizator în baza de date.
+        /// </summary>
+        /// <param name="user">Utilizatorul de creat.</param>
         public void CreateUser(User user)
         {
             try
@@ -15,12 +23,14 @@ namespace DataBase
                 using (var connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "INSERT INTO Users (Name, UserStat, TeamLeadId) VALUES (@Name, @UserStat, @TeamLeadId)";
+                    string query = "INSERT INTO Users (Name, UserStat, TeamLeadId, Username, Password) VALUES (@Name, @UserStat, @TeamLeadId, @Username, @Password)";
                     using (var command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Name", user.Name);
                         command.Parameters.AddWithValue("@UserStat", user.UserStat.ToString());
                         command.Parameters.AddWithValue("@TeamLeadId", (object)user.TeamLeadId ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@Username", user.Username); // Adăugarea parametrului pentru username
+                        command.Parameters.AddWithValue("@Password", user.Password); // Adăugarea parametrului pentru parolă
                         command.ExecuteNonQuery();
                     }
                 }
@@ -32,6 +42,11 @@ namespace DataBase
             }
         }
 
+
+        /// <summary>
+        /// Obține o listă cu toți utilizatorii din baza de date.
+        /// </summary>
+        /// <returns>O listă de utilizatori.</returns>
         public List<User> GetAllUsers()
         {
             var users = new List<User>();
@@ -52,7 +67,9 @@ namespace DataBase
                                     UserId = reader.GetInt32(0),
                                     Name = reader.GetString(1),
                                     UserStat = (UserStats)Enum.Parse(typeof(UserStats), reader.GetString(2)),
-                                    TeamLeadId = reader.IsDBNull(3) ? (int?)null : reader.GetInt32(3)
+                                    TeamLeadId = reader.IsDBNull(3) ? (int?)null : reader.GetInt32(3),
+                                    Username = reader.GetString(4),
+                                    Password = reader.GetString(5)
                                 };
 
                                 // Fetch tasks associated with this user
@@ -71,7 +88,11 @@ namespace DataBase
             return users;
         }
 
-        // Method to fetch tasks associated with a specific user
+        /// <summary>
+        /// Obține lista de task-uri asociate unui anumit utilizator.
+        /// </summary>
+        /// <param name="userId">ID-ul utilizatorului.</param>
+        /// <returns>O listă de task-uri.</returns>
         private List<Task> GetUserTasks(int userId)
         {
             var tasks = new List<Task>();
@@ -116,6 +137,11 @@ namespace DataBase
 
 
 
+        /// <summary>
+        /// Obține un utilizator din baza de date în funcție de ID-ul său.
+        /// </summary>
+        /// <param name="userId">ID-ul utilizatorului.</param>
+        /// <returns>Utilizatorul găsit sau null dacă nu există.</returns>
         public User GetUserById(int userId)
         {
             User user = null;
@@ -151,6 +177,10 @@ namespace DataBase
             return user;
         }
 
+        /// <summary>
+        /// Actualizează informațiile unui utilizator în baza de date.
+        /// </summary>
+        /// <param name="user">Utilizatorul cu noile informații.</param>
         public void UpdateUser(User user)
         {
             try
@@ -159,16 +189,20 @@ namespace DataBase
                 {
                     connection.Open();
                     string query = @"
-                        UPDATE Users 
-                        SET Name = @Name, 
-                            UserStat = @UserStat, 
-                            TeamLeadId = @TeamLeadId 
-                        WHERE UserId = @UserId";
+                UPDATE Users 
+                SET Name = @Name, 
+                    UserStat = @UserStat, 
+                    TeamLeadId = @TeamLeadId,
+                    Username = @Username, 
+                    Password = @Password 
+                WHERE UserId = @UserId";
                     using (var command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Name", user.Name);
                         command.Parameters.AddWithValue("@UserStat", user.UserStat.ToString());
                         command.Parameters.AddWithValue("@TeamLeadId", (object)user.TeamLeadId ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@Username", user.Username); // Adăugarea parametrului pentru username
+                        command.Parameters.AddWithValue("@Password", user.Password); // Adăugarea parametrului pentru parolă
                         command.Parameters.AddWithValue("@UserId", user.UserId);
                         command.ExecuteNonQuery();
                     }
@@ -180,7 +214,10 @@ namespace DataBase
                 Console.WriteLine($"An error occurred while updating the user: {ex.Message}");
             }
         }
-
+        /// <summary>
+        /// Șterge un utilizator din baza de date împreună cu toate task-urile asociate acestuia.
+        /// </summary>
+        /// <param name="userId">ID-ul utilizatorului de șters.</param>
         public void DeleteUser(int userId)
         {
             try
@@ -212,6 +249,11 @@ namespace DataBase
                 Console.WriteLine($"An error occurred while deleting the user: {ex.Message}");
             }
         }
+        /// <summary>
+        /// Obține o listă cu toți utilizatorii care sunt subordonați unui anumit șef de echipă.
+        /// </summary>
+        /// <param name="teamLeadId">ID-ul șefului de echipă.</param>
+        /// <returns>O listă de utilizatori subordonați.</returns>
         public List<User> GetUsersByTeamLeadId(int teamLeadId)
         {
             var users = new List<User>();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskLibrary;
 
 namespace DataBaseDLL
 {
@@ -28,7 +29,7 @@ namespace DataBaseDLL
         public string Username { get; set; } 
         public string Password { get; set; } 
 
-        public List<Task> Tasks { get; set; }
+        public List<TaskLibrary.Task> Tasks { get; set; }
 
     }
 }

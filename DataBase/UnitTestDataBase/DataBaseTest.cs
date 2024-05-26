@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.Collections.Generic;
+using DataBase;
 
 namespace UnitTestDataBase
 {

@@ -4,23 +4,16 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskLibrary;
 
-namespace DataBaseDLL
+namespace DataBase
 {
-    /// <summary>
-    /// Clasă care se ocupă de operațiile legate de atribuirea task-urilor utilizatorilor în baza de date.
-    /// </summary>
-
     public class UserTaskRepository
     {
         private string connectionString = "Data Source=database.sqlite;Version=3;";
+        private TaskRepository taskRepository = new TaskRepository();
 
-        /// <summary>
-        /// Adaugă o atribuire între un task și un utilizator în baza de date.
-        /// </summary>
-        /// <param name="taskId">ID-ul task-ului.</param>
-        /// <param name="userId">ID-ul utilizatorului.</param>
-        public void AddUserTask(int taskId, int userId)
+        public void AddUserTask(string numeTask, int userId)
         {
             try
             {
@@ -33,7 +26,7 @@ namespace DataBaseDLL
                     using (var command = new SQLiteCommand(insertQuery, connection))
                     {
                         command.Parameters.AddWithValue("@UserId", userId);
-                        command.Parameters.AddWithValue("@TaskId", taskId);
+                        command.Parameters.AddWithValue("@TaskId", taskRepository.GetTaskId(numeTask));
 
                         command.ExecuteNonQuery();
                     }
@@ -47,12 +40,7 @@ namespace DataBaseDLL
             }
         }
 
-        /// <summary>
-        /// Șterge o atribuire între un task și un utilizator din baza de date.
-        /// </summary>
-        /// <param name="taskId">ID-ul task-ului.</param>
-        /// <param name="userId">ID-ul utilizatorului.</param>
-        public void DeleteUserTask(int taskId, int userId)
+        public void DeleteUserTask(string numeTask, int userId)
         {
             try
             {
@@ -65,7 +53,7 @@ namespace DataBaseDLL
                     using (var command = new SQLiteCommand(deleteQuery, connection))
                     {
                         command.Parameters.AddWithValue("@UserId", userId);
-                        command.Parameters.AddWithValue("@TaskId", taskId);
+                        command.Parameters.AddWithValue("@TaskId", taskRepository.GetTaskId(numeTask));
 
                         command.ExecuteNonQuery();
                     }
@@ -79,14 +67,7 @@ namespace DataBaseDLL
             }
         }
 
-        /// <summary>
-        /// Actualizează atribuirea unui task către un utilizator în baza de date.
-        /// </summary>
-        /// <param name="oldTaskId">ID-ul vechi al task-ului.</param>
-        /// <param name="oldUserId">ID-ul vechi al utilizatorului.</param>
-        /// <param name="newTaskId">ID-ul nou al task-ului.</param>
-        /// <param name="newUserId">ID-ul nou al utilizatorului.</param>
-        public void UpdateUserTask(int oldTaskId, int oldUserId, int newTaskId, int newUserId)
+        public void UpdateUserTask(string oldTaskName, int oldUserId, string newTaskName, int newUserId)
         {
             try
             {
@@ -98,9 +79,9 @@ namespace DataBaseDLL
 
                     using (var command = new SQLiteCommand(updateQuery, connection))
                     {
-                        command.Parameters.AddWithValue("@NewTaskId", newTaskId);
+                        command.Parameters.AddWithValue("@NewTaskId", taskRepository.GetTaskId(newTaskName));
                         command.Parameters.AddWithValue("@NewUserId", newUserId);
-                        command.Parameters.AddWithValue("@OldTaskId", oldTaskId);
+                        command.Parameters.AddWithValue("@OldTaskId", taskRepository.GetTaskId(oldTaskName));
                         command.Parameters.AddWithValue("@OldUserId", oldUserId);
 
                         command.ExecuteNonQuery();
@@ -114,21 +95,16 @@ namespace DataBaseDLL
                 Console.WriteLine($"An error occurred while updating the Task assignment: {ex.Message}");
             }
         }
-        /// <summary>
-        /// Obține lista de task-uri atribuite unui utilizator.
-        /// </summary>
-        /// <param name="userId">ID-ul utilizatorului.</param>
-        /// <returns>O listă de task-uri atribuite utilizatorului.</returns>
-        public List<Task> GetUserTasks(int userId)
+        public List<TaskLibrary.Task> GetUserTasks(int userId)
         {
-            var tasks = new List<Task>();
+            var tasks = new List<TaskLibrary.Task>();
             try
             {
                 using (var connection = new SQLiteConnection(connectionString))
                 {
                     connection.Open();
                     string query = @"
-                SELECT Tasks.TaskId, Tasks.NumeTask, Tasks.DescriereTask, Tasks.NumeAssigner
+                SELECT Tasks.TaskId, Tasks.NumeTask, Tasks.dataAsignarii, Tasks.OreLogate, Tasks.DescriereTask, Tasks.NumeAssigner
                 FROM Tasks
                 INNER JOIN UserTasks ON Tasks.TaskId = UserTasks.TaskId
                 WHERE UserTasks.UserId = @UserId";
@@ -139,13 +115,12 @@ namespace DataBaseDLL
                         {
                             while (reader.Read())
                             {
-                                tasks.Add(new Task
-                                {
-                                    TaskId = reader.GetInt32(0),
-                                    NumeTask = reader.GetString(1),
-                                    DescriereTask = reader.GetString(2),
-                                    NumeAssigner = reader.GetString(3)
-                                });
+                                TaskLibrary.Task task = new TaskLibrary.Task(nume: reader.GetString(1), numePersoana: reader.GetString(5));
+                                task.DataAsignariiAsDateTime = reader.GetDateTime(2);
+                                task.OreLogate = reader.GetDouble(3);
+                                task.DescriereTask = reader.GetString(4);
+
+                                tasks.Add(task);
                             }
                         }
                     }
@@ -157,12 +132,7 @@ namespace DataBaseDLL
             }
             return tasks;
         }
-        /// <summary>
-        /// Obține lista de utilizatori care au atribuit un anumit task.
-        /// </summary>
-        /// <param name="taskId">ID-ul task-ului.</param>
-        /// <returns>O listă de utilizatori care au atribuit task-ul.</returns>
-        public List<User> GetUsersByTaskId(int taskId)
+        /*public List<User> GetUsersByTaskId(int taskId)
         {
             var users = new List<User>();
             try
@@ -199,7 +169,7 @@ namespace DataBaseDLL
                 Console.WriteLine($"An error occurred while retrieving users by task ID: {ex.Message}");
             }
             return users;
-        }
+        }*/
 
     }
 }

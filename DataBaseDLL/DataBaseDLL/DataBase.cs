@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SQLite;
+using TaskLibrary;
 
 /// <summary>
 /// Clasa responsabilă de gestionarea bazei de date și a tabelelor asociate.

@@ -1,40 +1,43 @@
 ﻿using System;
 using System.Data.SQLite;
 
-public class Database
+namespace DataBase
 {
-    private string connectionString = "Data Source=database.sqlite;Version=3;";
 
-    public Database()
+    /// <summary>
+    /// Clasa responsabilă de gestionarea bazei de date și a tabelelor asociate.
+    /// </summary>
+    public class Database
     {
-        try
+        private string connectionString = "Data Source=database.sqlite;Version=3;";
+
+        public Database()
         {
             CreateDatabase();
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"An error occurred while instantiating the database: {ex.Message}");
-            throw; // rethrow the exception
-        }
-    }
 
-    private void CreateDatabase()
-    {
-        try
+        /// <summary>
+        /// Creează baza de date și tabelele asociate (dacă nu există).
+        /// </summary>
+        private void CreateDatabase()
         {
-            using (var connection = new SQLiteConnection(connectionString))
+            try
             {
-                connection.Open();
+                using (var connection = new SQLiteConnection(connectionString))
+                {
+                    connection.Open();
 
-                string createUsersTableQuery = @"
+                    string createUsersTableQuery = @"
                     CREATE TABLE IF NOT EXISTS Users (
                         UserId INTEGER PRIMARY KEY AUTOINCREMENT,
                         Name TEXT NOT NULL,
                         UserStat TEXT NOT NULL,
-                        TeamLeadId INTEGER
+                        TeamLeadId INTEGER,
+                        Username TEXT NOT NULL UNIQUE,
+                        Password TEXT NOT NULL
                     )";
 
-                string createTasksTableQuery = @"
+                    string createTasksTableQuery = @"
                     CREATE TABLE IF NOT EXISTS Tasks (
                         TaskId INTEGER PRIMARY KEY AUTOINCREMENT,
                         NumeTask TEXT NOT NULL,
@@ -44,7 +47,7 @@ public class Database
                         NumeAssigner TEXT
                     )";
 
-                string createUserTasksTableQuery = @"
+                    string createUserTasksTableQuery = @"
                     CREATE TABLE IF NOT EXISTS UserTasks (
                         UserId INTEGER,
                         TaskId INTEGER,
@@ -53,27 +56,28 @@ public class Database
                         FOREIGN KEY (TaskId) REFERENCES Tasks (TaskId)
                     )";
 
-                using (var command = new SQLiteCommand(createUsersTableQuery, connection))
-                {
-                    command.ExecuteNonQuery();
-                }
+                    using (var command = new SQLiteCommand(createUsersTableQuery, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
 
-                using (var command = new SQLiteCommand(createTasksTableQuery, connection))
-                {
-                    command.ExecuteNonQuery();
-                }
+                    using (var command = new SQLiteCommand(createTasksTableQuery, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
 
-                using (var command = new SQLiteCommand(createUserTasksTableQuery, connection))
-                {
-                    command.ExecuteNonQuery();
-                }
+                    using (var command = new SQLiteCommand(createUserTasksTableQuery, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
 
-                Console.WriteLine("Database and tables created successfully.");
+                    Console.WriteLine("Database and tables created successfully.");
+                }
             }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"An error occurred while creating the database: {ex.Message}");
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while creating the database: {ex.Message}");
+            }
         }
     }
 }
